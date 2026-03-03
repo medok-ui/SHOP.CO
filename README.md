@@ -1,14 +1,14 @@
-# 🛍️ Shop.co — Fashion E-Commerce App
+# 🛍️ Shop.co — E-Commerce Demo App
 
-> ⚠️ **This is a DEMO version.** The project is actively in development — many improvements, fixes, and new features are planned. The current build is not final.
+> ⚠️ **This is a DEMO / Work-In-Progress version.** The project is actively being developed — many improvements, fixes, and new pages are still coming. Do not treat this as a final product.
 
 ---
 
 ## 📌 About the Project
 
-**Shop.co** is a modern fashion e-commerce web application built with **Angular 17+** using the latest Angular features such as signals, computed values, and OnPush change detection strategy throughout the entire codebase.
+**Shop.co** is a modern frontend e-commerce application built with **Angular 17+** using the latest framework features: Signals, computed state, `OnPush` change detection, and lazy-loaded routes. The project demonstrates a clean component-driven architecture for a clothing store.
 
-The app simulates a real online clothing store with product browsing, detailed product pages, a shopping cart with order summary, customer reviews, and more.
+The app currently includes a **Home page**, a **Product Detail page**, and a **Cart page**, with a **Promo/Discount** system already built in.
 
 ---
 
@@ -20,163 +20,168 @@ The app simulates a real online clothing store with product browsing, detailed p
 | TypeScript | Language |
 | SCSS | Styling |
 | Angular Signals | Reactive state management |
-| Angular Router | Client-side routing |
-| LocalStorage | Cart persistence |
-| OnPush CD | Performance optimization |
+| Angular Router | Navigation & lazy loading |
+| FormsModule | Form handling (ngModel) |
+| localStorage | Cart persistence |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/                  # Navigation header
+│   │   ├── footer/                  # Footer with newsletter signup
+│   │   ├── home-hero/               # Hero section with stats
+│   │   ├── brands-section/          # Animated brands bar
+│   │   ├── product-card/            # Reusable product card
+│   │   ├── product-section/         # New Arrivals section
+│   │   ├── product-top-selling/     # Top Selling section
+│   │   ├── product-details/         # Full product detail view
+│   │   ├── dress-style-browse/      # Browse by style (Casual, Formal, etc.)
+│   │   ├── testimonials/            # Customer reviews carousel
+│   │   ├── review-list/             # Filterable review list
+│   │   ├── recommendations/         # Recommended products
+│   │   ├── cart-item/               # Single cart item
+│   │   ├── cart-list/               # Cart items list
+│   │   └── order-summary/           # Order total & promo code
+│   ├── pages/
+│   │   ├── home/                    # Home page
+│   │   ├── product-detail/          # Product detail page
+│   │   └── cart/                    # Cart page
+│   ├── interfaces/                  # TypeScript interfaces
+│   ├── data/                        # Static mock data
+│   ├── service/
+│   │   └── cart.service.ts          # Cart logic & computed totals
+│   └── shared/
+│       └── button/                  # Reusable button component
+```
 
 ---
 
 ## 📄 Pages
 
-### ✅ Currently Available
+### 🏠 Home Page (`/home`)
+- Hero section with CTA button and store stats (200+ brands, 2000+ products, 30K+ customers)
+- Animated brands bar (Calvin Klein, Gucci, Prada, Versace, Zara)
+- **New Arrivals** product grid with "View All" load-more pagination
+- **Top Selling** product grid with "View All" load-more pagination
+- Browse by Dress Style cards (Casual, Formal, Party, Gym)
+- Customer testimonials carousel with left/right scroll
+- Newsletter signup embedded in the footer
 
-#### 🏠 Home (`/home`)
-The landing page featuring:
-- **Hero section** — bold call-to-action with key stats (200+ brands, 2000+ products, 30k+ customers)
-- **Brands strip** — animated scrolling banner with partner brand logos
-- **New Arrivals** — product grid filtered by `isNew` flag, loads 4 at a time with "View All"
-- **Top Selling** — same pattern filtered by `isTopSelling`
-- **Browse by Style** — visual category grid (Casual, Formal, Party, Gym) with background images
-- **Testimonials** — horizontally scrollable customer review cards with navigation arrows
-- **Footer** — newsletter signup, nav links, social media, payment method icons
+### 🧾 Product Detail Page (`/product/:id`)
+- Product gallery with thumbnail list
+- Color selector with active state highlight
+- Size selector: Small / Medium / Large / X-Large
+- Quantity control (+/−)
+- "Add to Cart" button with confirmation feedback text
+- Filterable & sortable review list (Most Recent / Highest Rating / Lowest Rating)
+- Delete/hide review functionality
+- Recommended products section at the bottom
 
-#### 📦 Product Detail (`/product/:id`)
-Full product page including:
-- Thumbnail gallery + main product image
-- Product name, rating, stars, review count
-- Price / original price / discount badge
-- Description text
-- Color selector (with active state)
-- Size selector (Small / Medium / Large / X-Large)
-- Quantity control (increment/decrement)
-- "Add to Cart" button with feedback state
-- **All Reviews** section with sorting (Most Recent, Highest/Lowest Rating), pagination ("Load More"), and ability to hide individual reviews
-- **Recommended for You** — 4 top-selling products
-
-#### 🛒 Cart (`/cart`)
-Shopping cart page with:
-- Cart items list (image, name, size, color, price, quantity controls, remove button)
-- **Order Summary** panel with subtotal, discount, delivery fee, and total
-- Promo code input (`MedokTop` — removes delivery fee)
+### 🛒 Cart Page (`/cart`)
+- Full cart item list with per-item quantity controls
+- Remove items from cart
+- Order summary: Subtotal, Discount, Delivery Fee, Total
+- Promo code input — enter `MedokTop` to unlock **free delivery**
+- Cart state persisted in `localStorage` — survives page refresh
 - Empty cart state with friendly message
-- Cart data persisted in **localStorage**
-
-### 🔜 Planned Pages
-
-#### 🎟️ Promo / Offers Page *(coming soon)*
-A dedicated page for promotional offers, discount codes, and seasonal sales. Will include featured deals, coupon management, and personalized offer banners.
-
-#### + More pages in progress...
 
 ---
 
-## 🧩 Components Overview
+## 🔧 Key Features
 
-| Component | Description |
+- **Angular Signals** — all reactive state managed via `signal()` and `computed()`
+- **OnPush Change Detection** — applied across all components for performance
+- **Lazy-loaded routes** — each page is loaded on demand
+- **Cart persistence** — cart state saved to `localStorage`
+- **Promo code system** — working discount code removes delivery fee
+- **Review system** — sortable by date/rating, deletable, with load-more pagination
+
+---
+
+## 🗺️ Routing
+
+```
+/             → redirects to /home
+/home         → Home page
+/product/:id  → Product detail page
+/cart         → Cart page
+/catalog      → Product catalog page (coming soon)
+**            → redirects to /home
+```
+
+---
+
+## 📦 Mock Data
+
+The app ships with **13 mock products** — t-shirts, jeans, shorts, polos, and shirts. Each product carries: name, image, thumbnails, price, optional discount, available colors, sizes, rating, review count, and boolean flags for `isNew` / `isTopSelling`.
+
+Reviews include **21 entries** with names, star ratings, verified badge status, and dates.
+
+---
+
+## 🧪 Promo Code
+
+| Code | Effect |
 |---|---|
-| `app-header` | Navigation bar with logo, nav links, search input, cart & user buttons |
-| `app-footer` | Full footer with newsletter, links, socials, payment icons |
-| `app-home-hero` | Hero section with stats |
-| `app-brands-section` | Animated brand logo strip |
-| `app-product-card` | Reusable product card (name, stars, price, discount) |
-| `app-product-section` | New Arrivals grid with load more |
-| `app-product-top-selling` | Top Selling grid with load more |
-| `app-product-details` | Full product detail view |
-| `app-dress-style-browse` | Style category grid |
-| `app-testimonials` | Scrollable testimonial cards |
-| `app-review-list` | Filterable, paginated review list |
-| `app-review-card` | Individual review card (with delete option) |
-| `app-cart-list` | List of cart items |
-| `app-cart-item` | Single cart item with quantity control |
-| `app-order-summary` | Order totals + promo code |
-| `app-newsletter` | Email newsletter signup |
-| `app-recommendations` | "Recommended for You" product grid |
-| `button[appButton]` | Shared button component (attribute directive style) |
+| `MedokTop` | Free delivery (delivery fee → $0) |
 
 ---
 
-## 🗂️ Project Structure
+## 🔮 What's Coming Next
 
-```
-src/
-├── app/
-│   ├── components/         # All reusable UI components
-│   ├── pages/              # Route-level page components
-│   │   ├── home/
-│   │   ├── product-detail/
-│   │   └── cart/
-│   ├── data/               # Static mock data (products, reviews, cart)
-│   ├── interfaces/         # TypeScript interfaces
-│   ├── service/            # CartService (signals-based)
-│   └── shared/             # Shared UI (button, etc.)
-├── assets/
-│   ├── images/             # Product images, hero, category backgrounds
-│   ├── svg/                # Icons (stars, arrows, payment methods, etc.)
-│   └── fonts/              # Satoshi, DM Sans, Integral CF
-```
+> This is an early demo. A lot is still planned:
+
+- [ ] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
+- [ ] **Shop / Category pages** — filter by style (Casual, Formal, Party, Gym)
+- [ ] **Working search** — header search bar is UI-only right now
+- [ ] **User auth page** — login/register UI
+- [ ] **Full responsive layout** — mobile & tablet support
+- [ ] **Real product thumbnails** — currently all thumbnails reuse the main image
+- [ ] **API integration** — replace all mock data with real backend calls
+- [ ] **Wishlist feature**
+- [ ] **Order confirmation page**
+- [ ] **More promo codes & discount logic**
+- [ ] **Better animations and micro-interactions**
 
 ---
 
-## ⚙️ Running Locally
+## 🏃 Getting Started
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/shop-co.git
+
 # Install dependencies
 npm install
 
 # Start development server
 ng serve
 
-# Navigate to
+# Open in browser
 http://localhost:4200
 ```
 
 ---
 
-## 🛒 Cart & State Management
-
-The cart is managed entirely via **Angular Signals** in `CartService`:
-
-- `cartProduct` signal — reactive list of cart items
-- `subtotal`, `discount`, `deliveryFee`, `total` — all computed signals
-- `orderSummary` — computed array fed directly to the Order Summary component
-- Data is persisted automatically to **localStorage** via an `effect()`
-- Promo code `MedokTop` zeroes out the delivery fee
-
----
-
-## 📋 Known Limitations (Demo)
-
-- Product images are static local assets — no real backend
-- No authentication / user accounts
-- No real checkout flow
-- Search input is UI-only (not functional yet)
-- No mobile/responsive layout yet
-- Review system is client-side only (deletes reset on refresh)
-- Promo code is hardcoded (`MedokTop`)
-
----
-
-## 🔮 Roadmap
-
-- [ ] Promo / Offers page
-- [ ] Mobile responsive layout
-- [ ] Functional search
-- [ ] Authentication (login/register)
-- [ ] Real checkout flow
-- [ ] Backend integration / API
-- [ ] Wishlist feature
-- [ ] More product filters and category pages
-
----
-
 ## 💡 Developer Notes
 
-The project makes consistent use of Angular's modern reactivity model (`signal`, `computed`, `effect`) instead of traditional RxJS streams for local state — keeping components simple and predictable. The `OnPush` change detection strategy is applied across all components for performance. The shared `button[appButton]` attribute selector pattern is a clean approach to extending native elements without wrapper divs.
-
-Overall, this is a solid, well-structured demo that demonstrates real-world Angular patterns. With a backend, responsive styles, and the planned pages, it would be a fully production-ready storefront.
+- Fonts (Satoshi, DM Sans, Integral CF) are loaded locally from `/assets/fonts/`
+- SVG icons live in `/assets/svg/`
+- Product images in `/assets/images/products/`
+- Brand logos in `/assets/images/brands/`
+- Style category backgrounds in `/assets/background-card/`
 
 ---
 
 ## 📝 License
 
-This project is for demonstration and portfolio purposes.
+This project is for educational and portfolio purposes. Not intended for commercial use in its current state.
+
+---
+
+*Built with ❤️ using Angular Signals — still a work in progress, but growing fast.*

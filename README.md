@@ -4,6 +4,13 @@
 
 ---
 
+## 🎨 Design
+
+The app is based on a Figma community template:
+**[E-commerce Website Template — Figma](https://www.figma.com/design/UsntLLhWyGh8PoAk0WQfop/E-commerce-Website-Template--Freebie---Community-?node-id=39-1402&p=f&t=XbTCbPf5XJwEkkw7-0)**
+
+---
+
 ## 📌 About the Project
 
 **Shop.co** is a modern frontend e-commerce application built with **Angular 17+** using the latest framework features: Signals, computed state, `OnPush` change detection, and lazy-loaded routes. The project demonstrates a clean component-driven architecture for a clothing store.

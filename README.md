@@ -1,59 +1,182 @@
-# SHOPCO
+# 🛍️ Shop.co — Fashion E-Commerce App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+> ⚠️ **This is a DEMO version.** The project is actively in development — many improvements, fixes, and new features are planned. The current build is not final.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📌 About the Project
+
+**Shop.co** is a modern fashion e-commerce web application built with **Angular 17+** using the latest Angular features such as signals, computed values, and OnPush change detection strategy throughout the entire codebase.
+
+The app simulates a real online clothing store with product browsing, detailed product pages, a shopping cart with order summary, customer reviews, and more.
+
+---
+
+## 🚀 Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Angular 17+ | Core framework |
+| TypeScript | Language |
+| SCSS | Styling |
+| Angular Signals | Reactive state management |
+| Angular Router | Client-side routing |
+| LocalStorage | Cart persistence |
+| OnPush CD | Performance optimization |
+
+---
+
+## 📄 Pages
+
+### ✅ Currently Available
+
+#### 🏠 Home (`/home`)
+The landing page featuring:
+- **Hero section** — bold call-to-action with key stats (200+ brands, 2000+ products, 30k+ customers)
+- **Brands strip** — animated scrolling banner with partner brand logos
+- **New Arrivals** — product grid filtered by `isNew` flag, loads 4 at a time with "View All"
+- **Top Selling** — same pattern filtered by `isTopSelling`
+- **Browse by Style** — visual category grid (Casual, Formal, Party, Gym) with background images
+- **Testimonials** — horizontally scrollable customer review cards with navigation arrows
+- **Footer** — newsletter signup, nav links, social media, payment method icons
+
+#### 📦 Product Detail (`/product/:id`)
+Full product page including:
+- Thumbnail gallery + main product image
+- Product name, rating, stars, review count
+- Price / original price / discount badge
+- Description text
+- Color selector (with active state)
+- Size selector (Small / Medium / Large / X-Large)
+- Quantity control (increment/decrement)
+- "Add to Cart" button with feedback state
+- **All Reviews** section with sorting (Most Recent, Highest/Lowest Rating), pagination ("Load More"), and ability to hide individual reviews
+- **Recommended for You** — 4 top-selling products
+
+#### 🛒 Cart (`/cart`)
+Shopping cart page with:
+- Cart items list (image, name, size, color, price, quantity controls, remove button)
+- **Order Summary** panel with subtotal, discount, delivery fee, and total
+- Promo code input (`MedokTop` — removes delivery fee)
+- Empty cart state with friendly message
+- Cart data persisted in **localStorage**
+
+### 🔜 Planned Pages
+
+#### 🎟️ Promo / Offers Page *(coming soon)*
+A dedicated page for promotional offers, discount codes, and seasonal sales. Will include featured deals, coupon management, and personalized offer banners.
+
+#### + More pages in progress...
+
+---
+
+## 🧩 Components Overview
+
+| Component | Description |
+|---|---|
+| `app-header` | Navigation bar with logo, nav links, search input, cart & user buttons |
+| `app-footer` | Full footer with newsletter, links, socials, payment icons |
+| `app-home-hero` | Hero section with stats |
+| `app-brands-section` | Animated brand logo strip |
+| `app-product-card` | Reusable product card (name, stars, price, discount) |
+| `app-product-section` | New Arrivals grid with load more |
+| `app-product-top-selling` | Top Selling grid with load more |
+| `app-product-details` | Full product detail view |
+| `app-dress-style-browse` | Style category grid |
+| `app-testimonials` | Scrollable testimonial cards |
+| `app-review-list` | Filterable, paginated review list |
+| `app-review-card` | Individual review card (with delete option) |
+| `app-cart-list` | List of cart items |
+| `app-cart-item` | Single cart item with quantity control |
+| `app-order-summary` | Order totals + promo code |
+| `app-newsletter` | Email newsletter signup |
+| `app-recommendations` | "Recommended for You" product grid |
+| `button[appButton]` | Shared button component (attribute directive style) |
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── components/         # All reusable UI components
+│   ├── pages/              # Route-level page components
+│   │   ├── home/
+│   │   ├── product-detail/
+│   │   └── cart/
+│   ├── data/               # Static mock data (products, reviews, cart)
+│   ├── interfaces/         # TypeScript interfaces
+│   ├── service/            # CartService (signals-based)
+│   └── shared/             # Shared UI (button, etc.)
+├── assets/
+│   ├── images/             # Product images, hero, category backgrounds
+│   ├── svg/                # Icons (stars, arrows, payment methods, etc.)
+│   └── fonts/              # Satoshi, DM Sans, Integral CF
+```
+
+---
+
+## ⚙️ Running Locally
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 ng serve
+
+# Navigate to
+http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛒 Cart & State Management
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The cart is managed entirely via **Angular Signals** in `CartService`:
 
-```bash
-ng generate component component-name
-```
+- `cartProduct` signal — reactive list of cart items
+- `subtotal`, `discount`, `deliveryFee`, `total` — all computed signals
+- `orderSummary` — computed array fed directly to the Order Summary component
+- Data is persisted automatically to **localStorage** via an `effect()`
+- Promo code `MedokTop` zeroes out the delivery fee
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 📋 Known Limitations (Demo)
 
-## Building
+- Product images are static local assets — no real backend
+- No authentication / user accounts
+- No real checkout flow
+- Search input is UI-only (not functional yet)
+- No mobile/responsive layout yet
+- Review system is client-side only (deletes reset on refresh)
+- Promo code is hardcoded (`MedokTop`)
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🔮 Roadmap
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- [ ] Promo / Offers page
+- [ ] Mobile responsive layout
+- [ ] Functional search
+- [ ] Authentication (login/register)
+- [ ] Real checkout flow
+- [ ] Backend integration / API
+- [ ] Wishlist feature
+- [ ] More product filters and category pages
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 💡 Developer Notes
 
-```bash
-ng test
-```
+The project makes consistent use of Angular's modern reactivity model (`signal`, `computed`, `effect`) instead of traditional RxJS streams for local state — keeping components simple and predictable. The `OnPush` change detection strategy is applied across all components for performance. The shared `button[appButton]` attribute selector pattern is a clean approach to extending native elements without wrapper divs.
 
-## Running end-to-end tests
+Overall, this is a solid, well-structured demo that demonstrates real-world Angular patterns. With a backend, responsive styles, and the planned pages, it would be a fully production-ready storefront.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## 📝 License
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is for demonstration and portfolio purposes.

@@ -1,0 +1,13 @@
+<section class="product-top__section">
+  <h2 class="product-top__title">top selling</h2>
+
+  <ul class="product-top__lists">
+    @for (item of productsItem(); track item.id) {
+      <li><app-product-card [product]="item" /></li>
+    }
+  </ul>
+
+  @if (isButtonVisible()) {
+    <button appButton (click)="onAllProducts()">View All</button>
+  }
+</section>

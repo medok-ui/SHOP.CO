@@ -1,0 +1,45 @@
+.testimonials {
+  max-width: 1410px;
+  margin: 95px auto auto auto;
+  padding: 15px;
+}
+
+.testimonials-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+}
+
+.testimonials-title {
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 48px;
+}
+
+.testimonials-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.testimonials-button {
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.testimonials-cards {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  padding: 0 calc(50% - (5 * 1000px / 2));
+}
+.testimonials-card {
+  flex-shrink: 0;
+}

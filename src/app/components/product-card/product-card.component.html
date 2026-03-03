@@ -1,0 +1,25 @@
+<a [routerLink]="['/product', product().id]" class="product">
+  <img class="product-img" [src]="product().image" [alt]="product().name" />
+  <div class="product-content">
+    <span class="product-name">{{ product().name }}</span>
+    <div class="product-stars">
+      <ul class="product-stars__lists">
+        @for (star of product().star; track star) {
+          <li><img src="/assets/svg/star.svg" alt="star" /></li>
+        }
+      </ul>
+      <div class="product-evaluation">
+        {{ product().rating }}/<span class="evaluation-max">{{ product().reviewCount }}</span>
+      </div>
+    </div>
+    <div class="product-prices">
+      @if (product().originalPrice) {
+        <span class="product-price">${{ product().price }}</span>
+        <span class="product-price__original">{{ product().originalPrice }}</span>
+        <div class="product-price__discount">-{{ product().discount }}%</div>
+      } @else {
+        <span class="product-price">${{ product().price }}</span>
+      }
+    </div>
+  </div>
+</a>

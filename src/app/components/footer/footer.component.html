@@ -1,0 +1,39 @@
+<app-newsletter />
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-wrapper">
+      <div class="footer-info">
+        <a routerLink="/home" class="footer-logo">SHOP.CO</a>
+        <p class="footer-description">
+          We have clothes that suits your style and which you’re proud to wear. From women to men.
+        </p>
+        <ul class="footer-socials">
+          @for (social of socialLinks(); track $index) {
+            <li>
+              <a class="footer-social" target="_blank" [href]="social.url"
+                ><img [src]="social.icon" [alt]="social.name"
+              /></a>
+            </li>
+          }
+        </ul>
+      </div>
+      @for (section of footerLinks(); track $index) {
+        <div class="footer-col">
+          <h4 class="footer-title">{{ section.title }}</h4>
+          @for (link of section.links; track $index) {
+            <a class="footer-link" [routerLink]="link.url">{{ link.label }}</a>
+          }
+        </div>
+      }
+    </div>
+    <hr class="line" />
+    <div class="footer-copyright">
+      <span class="footer-copyright__text">Shop.co © 2000-2023, All Rights Reserved</span>
+      <ul class="footer-payment-methods">
+        @for (item of paymentMethods(); track $index) {
+          <li><img [src]="item.icon" [alt]="item.alt" /></li>
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,9 @@
+<section class="brands">
+  <div class="brands-container">
+    <ul class="brands-lists">
+      @for (item of brandsItem(); track $index) {
+        <li><img [src]="item.img" [alt]="item.alt" /></li>
+      }
+    </ul>
+  </div>
+</section>

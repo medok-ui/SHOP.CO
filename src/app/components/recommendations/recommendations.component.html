@@ -1,0 +1,8 @@
+<section class="recommendations-section">
+  <h2 class="recommendations-title">Recommended for You</h2>
+  <div class="recommendations-grid">
+    @for (product of recommendedProductsItem(); track product.id) {
+      <app-product-card [product]="product" />
+    }
+  </div>
+</section>

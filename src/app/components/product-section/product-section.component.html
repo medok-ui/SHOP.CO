@@ -1,0 +1,13 @@
+<section class="product-section">
+  <h2 class="product-title">NEW ARRIVALS</h2>
+
+  <ul class="product-lists">
+    @for (item of productsItem(); track item.id) {
+      <li><app-product-card [product]="item" /></li>
+    }
+  </ul>
+
+  @if (isButtonVisible()) {
+    <button appButton (click)="onAllProducts()">View All</button>
+  }
+</section>

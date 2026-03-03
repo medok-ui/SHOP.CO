@@ -1,0 +1,33 @@
+<div class="cart-item">
+  <a [routerLink]="['/product', cart().id]">
+    <img class="cart-item-img" [src]="cart().image" [alt]="cart().name" />
+  </a>
+  <div class="cart-item-info">
+    <div class="cart-info-description">
+      <div>
+        <span class="cart-description-title">{{ cart().name }}</span>
+        <div class="cart-description-size">
+          Size: <span class="cart-size">{{ cart().selectedSize }}</span>
+        </div>
+        <div class="cart-description-color">
+          Color: <span class="cart-color">{{ cart().selectedColor }}</span>
+        </div>
+      </div>
+      <span class="cart-description-price">${{ cart().price }}</span>
+    </div>
+    <div class="cart-info-panel">
+      <button (click)="onRemoveCart(cart().id)" class="cart-panel-btn__remove">
+        <img src="/assets/svg/remove.svg" alt="remove" />
+      </button>
+      <div class="cart-panel-quantity">
+        <button (click)="onQuantityMinus()" class="cart-panel-quantity__btn">
+          <img class="cart-panel-quantity__btn" src="/assets/svg/minus.svg" alt="minus" />
+        </button>
+        <span class="cart-panel-quantity-count">{{ cart().quantity }}</span>
+        <button (click)="onQuantityPlus()" class="cart-panel-quantity__btn">
+          <img src="/assets/svg/plus.svg" alt="plus" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="order-summary">
+  <span class="order-summary-title">Order Summary</span>
+  <ul class="order-prices">
+    @for (item of cartService.orderSummary(); track item.name) {
+      <li class="order-price-item">
+        <span class="order-item-name">{{ item.name }}</span>
+        <span class="order-item-price">{{ item.prefix }}{{ item.value }}</span>
+      </li>
+    }
+  </ul>
+  <div class="order-summary-promo">
+    <input
+      type="text"
+      [(ngModel)]="inputValue"
+      [readonly]="cartService.inputReadonly()"
+      class="order-promo-input"
+      placeholder="Add promo code"
+    />
+    <button (click)="promoInput()" class="order-promo-btn">{{ btnText }}</button>
+  </div>
+  <button class="order-summary-btn">Go to Checkout</button>
+</div>

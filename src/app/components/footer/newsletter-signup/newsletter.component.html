@@ -1,0 +1,13 @@
+<div class="newsletter">
+  <h2 class="newsletter-title">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+  <form (ngSubmit)="onSubmit()" class="newsletter-form">
+    <input
+      [(ngModel)]="emailInput"
+      name="email"
+      class="newsletter-input"
+      type="email"
+      placeholder="Enter your email address"
+    />
+    <button class="newsletter-btn">{{ buttonText }}</button>
+  </form>
+</div>

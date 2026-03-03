@@ -1,0 +1,17 @@
+<section class="dress-style-browse">
+  <h2 class="dress-style-browse__title">BROWSE BY dress STYLE</h2>
+  <ul class="dress-style-browse__grid">
+    @for (item of categoriesItem; track item.id) {
+      <li
+        [style.background-image]="'url(' + item.img + ')'"
+        [style.width]="item.width"
+        [style.height]="item.height"
+        class="dress-style-browse__item"
+      >
+        <a [routerLink]="item.link">
+          <span class="dress-style-browse__label">{{ item.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</section>

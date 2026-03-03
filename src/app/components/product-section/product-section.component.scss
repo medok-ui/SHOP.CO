@@ -1,0 +1,25 @@
+.product-section {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1410px;
+  margin: 72px auto 64px auto;
+  padding: 15px;
+}
+
+.product-title {
+  margin-bottom: 55px;
+
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 48px;
+  text-align: center;
+}
+
+.product-lists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  justify-content: space-between;
+  align-items: center;
+}

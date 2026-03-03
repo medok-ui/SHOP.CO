@@ -1,0 +1,85 @@
+.hero {
+  padding: 100px 0;
+
+  width: 100%;
+  background: url('/assets/background-images/hero.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-container {
+  max-width: 1410px;
+  margin: 0 auto;
+  padding: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 100%;
+
+  max-width: 577px;
+  margin-bottom: 32px;
+}
+
+.hero-description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(0, 0, 0, 0.6);
+
+  max-width: 545px;
+  margin-bottom: 32px;
+}
+
+.cta-button {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+
+  border-radius: 50px;
+  padding: 16px 54px;
+  background: #000;
+
+  transition: 0.2s ease-in;
+}
+.cta-button:hover {
+  box-shadow: 0 0 10px #000;
+  background: #000000d7;
+  transform: scale(0.9);
+}
+
+.hero-stats {
+  margin-top: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.stat-label {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(0, 0, 0, 0.6);
+}

@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "384862bc-ea1f-4e63-9b9c-bd27d7ea26ab"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -10,7 +11,22 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush",
+          "type": "component"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true,
+          "type": "service"
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true,
+          "type": "pipe"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "type": "directive"
         }
       },
       "root": "",
@@ -29,9 +45,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {

@@ -1,0 +1,31 @@
+@if (allReviews().length !== 0) {
+  <section class="review-list">
+    <div class="review-list-head">
+      <div class="review-head-wrapper">
+        <h3 class="review-head-title">All Reviews</h3>
+        <span class="review-head-count">({{ allReviews().length }})</span>
+      </div>
+      <div class="review-list-filters">
+        <button class="review-filters-btn">
+          <img src="/assets/svg/filter.svg" alt="filter" />
+        </button>
+        <select [(ngModel)]="selectedFilterValue" class="review-filters-select">
+          @for (option of filterOptions(); track $index) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <ul class="review-list-reviews">
+      @for (reviews of filteredReviews(); track reviews.id) {
+        <li class="review-review-card">
+          <app-review-card (delete)="onDelete($event)" [review]="reviews" />
+        </li>
+      }
+    </ul>
+
+    @if (isButtonVisible()) {
+      <button (click)="onAllReviews()" appButton>Load More Reviews</button>
+    }
+  </section>
+}

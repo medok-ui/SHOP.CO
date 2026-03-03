@@ -1,0 +1,17 @@
+.cart-list {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px 24px;
+  width: 715px;
+  height: 508px;
+}
+
+.cart-list-grid {
+  display: flex;
+  flex-direction: column;
+
+  max-height: 470px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

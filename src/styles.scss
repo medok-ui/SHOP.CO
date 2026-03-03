@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'fonts';
+@use 'reset';
+
+:root {
+  --font-family: 'Satoshi', sans-serif;
+  --second-family: 'DM Sans', sans-serif;
+  --third-family: 'Integral CF', sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+.line {
+  margin: 0 auto auto auto;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 1410px;
+  padding: 0 15px;
+  height: 0px;
+}

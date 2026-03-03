@@ -1,0 +1,57 @@
+.review-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 28px 32px;
+  max-width: 600px;
+  background-color: #fff;
+
+  transition: 0.2s ease-in;
+}
+.review-card:hover {
+  transform: scale(0.95);
+}
+
+.review-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.review-top-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.review-card-name {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.review-name-user {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 110%;
+}
+
+.review-card-description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 24px;
+}
+
+.review-card-date {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(0, 0, 0, 0.6);
+}

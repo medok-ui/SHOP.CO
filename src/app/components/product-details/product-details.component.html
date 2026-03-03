@@ -1,0 +1,84 @@
+<section class="product-details">
+  <div class="product-details-gallery">
+    <ul class="product-details-gallery__thumbnails">
+      @for (item of product()?.thumbnails; track $index) {
+        <li>
+          <img class="product-thumbnails__img" [src]="product()?.image" [alt]="product()?.name" />
+        </li>
+      }
+    </ul>
+    <div>
+      <img class="product-details-gallery__main" [src]="product()?.image" [alt]="product()?.name" />
+    </div>
+  </div>
+  <div class="product-details-info">
+    <span class="product-details-name">{{ product()?.name }}</span>
+    <div class="product-details-ratings">
+      <ul class="product-details-stars">
+        @for (item of product()?.star; track $index) {
+          <li><img class="product-details-star" src="assets/svg/star.svg" alt="Star" /></li>
+        }
+      </ul>
+      <div class="product-details-reviews">
+        <span class="product-details-rating">{{ product()?.rating }} </span>
+        <span class="product-details-review"> /{{ product()?.reviewCount }} </span>
+      </div>
+    </div>
+    <div class="product-details-prices">
+      @if (product()?.discount) {
+        <span class="product-details-price">${{ product()?.price }}</span>
+        <span class="product-details-original-price">${{ product()?.originalPrice }}</span>
+        <div class="product-details-discount">-{{ product()?.discount }}%</div>
+      } @else {
+        <span class="product-details-price">${{ product()?.price }}</span>
+      }
+    </div>
+    <p class="product-details-description">{{ product()?.description }}</p>
+    <hr class="product-details-line" />
+    <div class="product-details-colors">
+      <span class="product-details-colors__title">Select Colors</span>
+      <ul class="product-details-colors__list">
+        @for (color of product()?.colors; track $index) {
+          <li>
+            <button
+              (click)="onColorSelect(color)"
+              [class.active]="product()?.selectedColor === color"
+              [style.background]="color"
+              class="product-details-color"
+            ></button>
+          </li>
+        }
+      </ul>
+    </div>
+    <hr class="product-details-line" />
+    <div class="product-details-size">
+      <span class="product-details-size__title">Choose Size</span>
+      <ul class="product-details-size__list">
+        @for (size of product()?.sizes; track $index) {
+          <li>
+            <button
+              (click)="onSizeSelect(size)"
+              [class.active]="product()?.selectedSize === size"
+              class="product-details-size__button"
+            >
+              {{ size }}
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
+    <hr class="product-details-line" />
+    <div class="product-details-add-product">
+      <div class="product-details-quantity">
+        <button (click)="onQuantityMinus()" class="product-details-quantity__btn">
+          <img src="/assets/svg/minus.svg" alt="minus" />
+        </button>
+        <span class="product-details-quantity-count">{{ product()?.quantity }}</span>
+        <button (click)="onQuantityPlus()" class="product-details-quantity__btn">
+          <img src="/assets/svg/plus.svg" alt="plus" />
+        </button>
+      </div>
+      <button class="product-details-add-btn" (click)="onAddCart()">{{ textBtn }}</button>
+    </div>
+  </div>
+</section>

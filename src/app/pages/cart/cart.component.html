@@ -1,0 +1,13 @@
+<app-header />
+@if (cartService.cartProduct().length !== 0) {
+  <h2 class="cart-title">Your Cart</h2>
+
+  <div class="cart-grid">
+    <app-cart-list />
+    <app-order-summary />
+  </div>
+} @else {
+  <h2 class="cart-title__Empty">Empty! Please add the item to your cart.</h2>
+}
+
+<app-footer />

@@ -1,0 +1,14 @@
+<div class="review-card">
+  <ul class="review-card-stars">
+    @for (star of review().star; track $index) {
+      <li><img src="/assets/svg/star.svg" alt="star" /></li>
+    }
+  </ul>
+  <div class="review-card-user">
+    <span class="review-card-user__name">{{ review().name }}</span>
+    @if (review().isVerified) {
+      <img src="/assets/svg/review-user-mark.svg" alt="mark" />
+    }
+  </div>
+  <p class="review-card-description">{{ review().text }}</p>
+</div>

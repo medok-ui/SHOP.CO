@@ -1,0 +1,27 @@
+.brands {
+  overflow: hidden;
+  padding: 42px 0;
+  background: #000;
+}
+
+.brands-container {
+  max-width: 1410px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.brands-lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}

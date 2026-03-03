@@ -1,0 +1,22 @@
+.recommendations-section {
+  margin-top: 64px;
+
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.recommendations-title {
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.recommendations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 13px;
+}

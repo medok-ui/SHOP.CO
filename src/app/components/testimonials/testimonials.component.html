@@ -1,0 +1,18 @@
+<section class="testimonials">
+  <div class="testimonials-head">
+    <h2 class="testimonials-title">OUR HAPPY CUSTOMERS</h2>
+    <div class="testimonials-buttons">
+      <button class="testimonials-button" (click)="onScrollLeft()">
+        <img src="/assets/svg/arrow-left.svg" alt="arrow left" />
+      </button>
+      <button class="testimonials-button" (click)="onScrollRight()">
+        <img src="/assets/svg/arrow-right.svg" alt="arrow right" />
+      </button>
+    </div>
+  </div>
+  <ul class="testimonials-cards" #slider>
+    @for (item of reviews(); track item.id) {
+      <li class="testimonials-card"><app-review-card [review]="item" /></li>
+    }
+  </ul>
+</section>

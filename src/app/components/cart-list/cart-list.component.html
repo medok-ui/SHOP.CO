@@ -1,0 +1,7 @@
+<div class="cart-list">
+  <ul class="cart-list-grid">
+    @for (cart of cartService.cartProduct(); track cart.id) {
+      <li><app-cart-item [cart]="cart" (quantityChange)="onQuantityChange($event)" /></li>
+    }
+  </ul>
+</div>

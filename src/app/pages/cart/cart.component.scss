@@ -1,0 +1,28 @@
+.cart-title {
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 40px;
+  margin-bottom: 24px;
+
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.cart-title__Empty {
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 40px;
+  margin: 250px 0 400px;
+
+  text-align: center;
+}
+
+.cart-grid {
+  display: flex;
+  gap: 20px;
+
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 15px;
+}

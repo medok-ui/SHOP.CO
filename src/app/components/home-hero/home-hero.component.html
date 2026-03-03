@@ -1,0 +1,20 @@
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+      <p class="hero-description">
+        Browse through our diverse range of meticulously crafted garments, designed to bring out
+        your individuality and cater to your sense of style.
+      </p>
+      <button class="cta-button">Shop Now</button>
+      <ul class="hero-stats">
+        @for (item of statItems; track $index) {
+          <li class="stat-item">
+            <span class="stat-value">{{ item.value }}</span>
+            <span class="stat-label">{{ item.label }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

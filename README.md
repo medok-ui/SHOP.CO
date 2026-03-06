@@ -161,7 +161,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/medok-ui/SHOP.COgit
+git clone https://github.com/medok-ui/SHOP.CO.git
 
 # Install dependencies
 npm install

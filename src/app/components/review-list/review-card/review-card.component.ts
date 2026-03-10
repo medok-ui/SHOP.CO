@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { IReview } from '../../../interfaces/review.interface';
-import { review } from '../../../data/review.data';
 
 @Component({
   selector: 'app-review-card',

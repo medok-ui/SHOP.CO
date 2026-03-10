@@ -11,5 +11,5 @@ import { IProduct } from '../../interfaces/product.interface';
 })
 export class ProductCardComponent {
   // product = signal<IProduct[]>(products);
-  product = input.required<IProduct>()
+  product = input.required<IProduct>();
 }

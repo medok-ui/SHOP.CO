@@ -1,14 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  signal,
-  viewChild,
-  ViewChild,
-} from '@angular/core';
-import { ReviewCardComponent } from './review-card/review-card.component';
+import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
 import { reviews } from './review-card.data';
 import { IReview } from './review-card.interface';
+import { ReviewCardComponent } from './review-card/review-card.component';
 
 @Component({
   selector: 'app-testimonials',

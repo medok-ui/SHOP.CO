@@ -21,15 +21,15 @@ The app currently includes a **Home page**, a **Product Detail page**, and a **C
 
 ## 🚀 Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| Angular 17+ | Core framework |
-| TypeScript | Language |
-| SCSS | Styling |
+| Technology      | Purpose                   |
+| --------------- | ------------------------- |
+| Angular 17+     | Core framework            |
+| TypeScript      | Language                  |
+| SCSS            | Styling                   |
 | Angular Signals | Reactive state management |
-| Angular Router | Navigation & lazy loading |
-| FormsModule | Form handling (ngModel) |
-| localStorage | Cart persistence |
+| Angular Router  | Navigation & lazy loading |
+| FormsModule     | Form handling (ngModel)   |
+| localStorage    | Cart persistence          |
 
 ---
 
@@ -62,6 +62,7 @@ src/
 │   ├── data/                        # Static mock data
 │   ├── service/
 │   │   └── cart.service.ts          # Cart logic & computed totals
+|   |   └── product.service.ts       # API integration
 │   └── shared/
 │       └── button/                  # Reusable button component
 ```
@@ -71,6 +72,7 @@ src/
 ## 📄 Pages
 
 ### 🏠 Home Page (`/home`)
+
 - Hero section with CTA button and store stats (200+ brands, 2000+ products, 30K+ customers)
 - Animated brands bar (Calvin Klein, Gucci, Prada, Versace, Zara)
 - **New Arrivals** product grid with "View All" load-more pagination
@@ -80,6 +82,7 @@ src/
 - Newsletter signup embedded in the footer
 
 ### 🧾 Product Detail Page (`/product/:id`)
+
 - Product gallery with thumbnail list
 - Color selector with active state highlight
 - Size selector: Small / Medium / Large / X-Large
@@ -90,6 +93,7 @@ src/
 - Recommended products section at the bottom
 
 ### 🛒 Cart Page (`/cart`)
+
 - Full cart item list with per-item quantity controls
 - Remove items from cart
 - Order summary: Subtotal, Discount, Delivery Fee, Total
@@ -133,8 +137,8 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 
 ## 🧪 Promo Code
 
-| Code | Effect |
-|---|---|
+| Code       | Effect                            |
+| ---------- | --------------------------------- |
 | `MedokTop` | Free delivery (delivery fee → $0) |
 
 ---
@@ -149,7 +153,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 - [ ] **User auth page** — login/register UI
 - [ ] **Full responsive layout** — mobile & tablet support
 - [ ] **Real product thumbnails** — currently all thumbnails reuse the main image
-- [ ] **API integration** — replace all mock data with real backend calls
+- [✓] **API integration** — replace all mock data with real backend calls
 - [ ] **Wishlist feature**
 - [ ] **Order confirmation page**
 - [ ] **More promo codes & discount logic**
@@ -191,4 +195,4 @@ This project is for educational and portfolio purposes. Not intended for commerc
 
 ---
 
-*Built with ❤️ using Angular Signals — still a work in progress, but growing fast.*
+_Built with ❤️ using Angular Signals — still a work in progress, but growing fast._

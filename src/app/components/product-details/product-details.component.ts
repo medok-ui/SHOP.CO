@@ -1,9 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { IProduct } from '../../interfaces/product.interface';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { products } from '../../data/product.data';
-import { cartProduct } from '../../data/cart-product.data';
+import { IProduct } from '../../interfaces/product.interface';
 import { CartService } from '../../service/cart.service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +19,10 @@ import { CartService } from '../../service/cart.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent {
-  products = signal<IProduct[]>(products);
+  private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
+
+  products = signal<IProduct[]>([]);
   cartService = inject(CartService);
   textBtn = 'Add to Cart';
   // Получаем доступ к параметрам маршрута
@@ -22,10 +31,18 @@ export class ProductDetailsComponent {
   id = signal(Number(this.route.snapshot.paramMap.get('id')));
   // Находим продукт по id
   product = computed(() => this.products().find((p) => p.id === this.id()));
-  // Подписываемся на изменения параметров URL, чтобы обновлять id при навигации
   ngOnInit(): void {
+    // Подписываемся на изменения параметров URL, чтобы обновлять id при навигации
     this.route.params.subscribe((params) => {
       this.id.set(+params['id']);
+    });
+
+    const subscription = this.productService.getProducts().subscribe((products: IProduct[]) => {
+      this.products.set(products);
+    });
+
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
     });
   }
 

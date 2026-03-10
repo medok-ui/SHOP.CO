@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
-import { ProductCardComponent } from '../product-card/product-card.component';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { IProduct } from '../../interfaces/product.interface';
-import { products } from '../../data/product.data';
-import { IReview } from '../testimonials/review-card.interface';
+import { ProductService } from '../../service/product.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
   selector: 'app-recommendations',
@@ -12,6 +11,19 @@ import { IReview } from '../testimonials/review-card.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecommendationsComponent {
-  recommendedProducts: IProduct[] = products.filter((t) => t.isTopSelling === true);
-  recommendedProductsItem = computed(() => this.recommendedProducts.slice(0, 4));
+  private productService = inject(ProductService);
+  private allRecommendedProducts = signal<IProduct[]>([]);
+
+  recommendedProducts = computed(() =>
+    this.allRecommendedProducts().filter((t) => t.isTopSelling === true),
+  );
+  recommendedProductsItem = computed(() => this.recommendedProducts().slice(0, 4));
+
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.allRecommendedProducts.set(products);
+      },
+    });
+  }
 }

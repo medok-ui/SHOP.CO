@@ -82,7 +82,6 @@ src/
 ## 📄 Pages
 
 ### 🏠 Home Page (`/home`)
-
 - Hero section with CTA button and store stats (200+ brands, 2000+ products, 30K+ customers)
 - Animated brands bar (Calvin Klein, Gucci, Prada, Versace, Zara)
 - **New Arrivals** product grid with "View All" load-more pagination
@@ -91,8 +90,9 @@ src/
 - Customer testimonials carousel with left/right scroll
 - Newsletter signup embedded in the footer
 
-### 🧾 Product Detail Page (`/product/:id`)
+---
 
+### 🧾 Product Detail Page (`/product/:id`)
 - Product gallery with thumbnail list
 - Color selector with active state highlight
 - Size selector: Small / Medium / Large / X-Large
@@ -102,8 +102,9 @@ src/
 - Delete/hide review functionality
 - Recommended products section at the bottom
 
-### 🛒 Cart Page (`/cart`)
+---
 
+### 🛒 Cart Page (`/cart`)
 - Full cart item list with per-item quantity controls
 - Remove items from cart
 - Order summary: Subtotal, Discount, Delivery Fee, Total
@@ -111,17 +112,21 @@ src/
 - Cart state persisted in `localStorage` — survives page refresh
 - Empty cart state with friendly message
 
-- ### 🔐 Login Page (`/login`)
-- Login form with validation (login, password)
-- "Confirm login" checkbox — required to submit
-- Redirects to `/home` on successful auth
-- Protected by route guard — authenticated users skip this page
+---
 
 ### 📝 Register Page (`/register`)
 - Register form with validation (login, email, password, confirm password)
 - Password match validation via custom validator
 - "Accept Terms of Service" checkbox — required to submit
 - Saves credentials to `localStorage` on success
+
+---
+
+### 🔐 Login Page (`/login`)
+- Login form with validation (login, password)
+- "Confirm login" checkbox — required to submit
+- Redirects to `/home` on successful auth
+- Protected by route guard — authenticated users skip this page
 
 ---
 

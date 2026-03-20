@@ -53,18 +53,26 @@ src/
 │   │   ├── recommendations/         # Recommended products
 │   │   ├── cart-item/               # Single cart item
 │   │   ├── cart-list/               # Cart items list
-│   │   └── order-summary/           # Order total & promo code
+│   │   ├── order-summary/           # Order total & promo code
+│   │   ├── header-login/            # Auth navigation header
+│   │   ├── form-login/              # Login form
+│   │   └── form-register/           # Register form
 │   ├── pages/
 │   │   ├── home/                    # Home page
 │   │   ├── product-detail/          # Product detail page
-│   │   └── cart/                    # Cart page
+│   │   ├── cart/                    # Cart page
+│   │   ├── login/                   # Login page
+│   │   └── register/                # Register page
+│   ├── guards/
+│   │   └── login-guard.ts           # Route protection guard
 │   ├── interfaces/                  # TypeScript interfaces
 │   ├── data/                        # Static mock data
 │   ├── service/
-│   │   └── cart.service.ts          # Cart logic & computed totals
-|   |   └── product.service.ts       # API integration
+│   │   ├── cart.service.ts          # Cart logic & computed totals
+│   │   └── product.service.ts       # API integration
 │   └── shared/
-│       └── button/                  # Reusable button component
+│       ├── button/                  # Reusable button component
+│       └── button-login/            # Auth button component
 ```
 
 ---

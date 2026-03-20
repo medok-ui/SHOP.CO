@@ -1,0 +1,99 @@
+.form-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-login-title {
+  font-family: var(--second-family);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-family: var(--second-family);
+
+  font-size: 20px;
+  font-weight: 800;
+  color: #333;
+}
+
+.form-input {
+  font-family: var(--second-family);
+
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-size: 15px;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border: 1px solid #0d7aa858;
+}
+
+.form-field-check {
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 13px;
+  color: #424242;
+  line-height: 1.5;
+}
+
+.form-checkbox[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 2px;
+  accent-color: #000;
+}
+
+.form-login-signin {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 17px;
+  color: #888;
+}
+
+.form-signin-link {
+  color: #000;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.form-field:has(.ng-invalid.ng-touched.ng-dirty) {
+  color: #e53935;
+}
+
+.form-input.ng-invalid.ng-touched.ng-dirty {
+  background-color: #fff5f5;
+  border-color: #e53935;
+}
+
+.form-field-check:has(.ng-invalid.ng-touched.ng-dirty) {
+  color: #e53935;
+}
+
+.form-checkbox.ng-invalid.ng-touched.ng-dirty {
+  outline: 1.5px solid #e53935;
+  border-radius: 3px;
+}

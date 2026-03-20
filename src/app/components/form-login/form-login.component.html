@@ -1,0 +1,36 @@
+<section class="form-login">
+  <h2 class="form-login-title">Sign In</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <label class="form-field">
+      login
+      <input
+        formControlName="login"
+        class="form-input"
+        type="text"
+        placeholder="Enter your login"
+      />
+    </label>
+    <label class="form-field">
+      Password
+
+      <input
+        formControlName="password"
+        class="form-input"
+        type="text"
+        placeholder="Enter your password"
+      />
+    </label>
+
+    <label class="form-field-check">
+      <input formControlName="confirmLogin" class="form-checkbox" type="checkbox" />
+      Confirm login
+    </label>
+
+    <button appButtonLogin>Sign In</button>
+  </form>
+
+  <span class="form-login-signin"
+    >Don't have an account? <a routerLink="/register" class="form-signin-link">Register</a></span
+  >
+</section>

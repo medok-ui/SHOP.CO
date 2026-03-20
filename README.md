@@ -30,6 +30,8 @@ The app currently includes a **Home page**, a **Product Detail page**, and a **C
 | Angular Router  | Navigation & lazy loading |
 | FormsModule     | Form handling (ngModel)   |
 | localStorage    | Cart persistence          |
+| Reactive Forms  | Form validation & auth    |
+| Route Guards    | Protected routes          |
 
 ---
 
@@ -119,13 +121,17 @@ src/
 - **Cart persistence** — cart state saved to `localStorage`
 - **Promo code system** — working discount code removes delivery fee
 - **Review system** — sortable by date/rating, deletable, with load-more pagination
+- **Route Guards** — protected routes redirect unauthenticated users to login
+- **Auth system** — register/login with localStorage persistence
 
 ---
 
 ## 🗺️ Routing
 
 ```
-/             → redirects to /home
+/             → redirects to /login
+/login        → Login page
+/register     → Register page
 /home         → Home page
 /product/:id  → Product detail page
 /cart         → Cart page

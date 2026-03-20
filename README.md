@@ -111,6 +111,18 @@ src/
 - Cart state persisted in `localStorage` — survives page refresh
 - Empty cart state with friendly message
 
+- ### 🔐 Login Page (`/login`)
+- Login form with validation (login, password)
+- "Confirm login" checkbox — required to submit
+- Redirects to `/home` on successful auth
+- Protected by route guard — authenticated users skip this page
+
+### 📝 Register Page (`/register`)
+- Register form with validation (login, email, password, confirm password)
+- Password match validation via custom validator
+- "Accept Terms of Service" checkbox — required to submit
+- Saves credentials to `localStorage` on success
+
 ---
 
 ## 🔧 Key Features

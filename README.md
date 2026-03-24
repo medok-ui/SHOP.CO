@@ -183,12 +183,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 - [ ] **Working search** — header search bar is UI-only right now
 - [X] **User auth page** — login/register UI
 - [ ] **Full responsive layout** — mobile & tablet support
-- [ ] **Real product thumbnails** — currently all thumbnails reuse the main image
 - [X] **API integration** — replace all mock data with real backend calls
-- [ ] **Wishlist feature**
-- [ ] **Order confirmation page**
-- [ ] **More promo codes & discount logic**
-- [ ] **Better animations and micro-interactions**
 
 ---
 

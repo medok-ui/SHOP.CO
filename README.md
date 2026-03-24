@@ -179,7 +179,6 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 > This is an early demo. A lot is still planned:
 
 - [ ] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
-- [ ] **Shop / Category pages** — filter by style (Casual, Formal, Party, Gym)
 - [ ] **Working search** — header search bar is UI-only right now
 - [X] **User auth page** — login/register UI
 - [ ] **Full responsive layout** — mobile & tablet support

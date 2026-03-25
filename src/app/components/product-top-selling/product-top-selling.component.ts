@@ -28,7 +28,7 @@ export class ProductTopSellingComponent implements OnInit {
   private visibleCount = signal<number>(this.STEP);
 
   private allTopSelling = computed(() =>
-    this.productService.filteredProducts().filter((p) => p.isNew),
+    this.productService.filteredProducts().filter((p) => p.isTopSelling),
   );
 
   productsItem = computed(() => this.allTopSelling().slice(0, this.visibleCount()));

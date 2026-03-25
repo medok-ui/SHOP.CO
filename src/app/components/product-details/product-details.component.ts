@@ -4,10 +4,11 @@ import {
   computed,
   DestroyRef,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { IProduct } from '../../interfaces/product.interface';
 import { CartService } from '../../service/cart.service';
 import { ProductService } from '../../service/product.service';
 
@@ -18,11 +19,11 @@ import { ProductService } from '../../service/product.service';
   styleUrl: './product-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit {
   private productService = inject(ProductService);
   private destroyRef = inject(DestroyRef);
 
-  products = signal<IProduct[]>([]);
+  products = this.productService.allProducts;
   cartService = inject(CartService);
   textBtn = 'Add to Cart';
   // Получаем доступ к параметрам маршрута
@@ -37,13 +38,7 @@ export class ProductDetailsComponent {
       this.id.set(+params['id']);
     });
 
-    const subscription = this.productService.getProducts().subscribe((products: IProduct[]) => {
-      this.products.set(products);
-    });
-
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   onColorSelect(color: string) {

@@ -179,7 +179,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 > This is an early demo. A lot is still planned:
 
 - [ ] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
-- [ ] **Working search** — header search bar is UI-only right now
+- [X] **Working search** — header search bar is UI-only right now
 - [X] **User auth page** — login/register UI
 - [ ] **Full responsive layout** — mobile & tablet support
 - [X] **API integration** — replace all mock data with real backend calls

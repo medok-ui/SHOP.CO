@@ -1,21 +1,23 @@
 <header class="header">
-  <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
-  <div class="navigation">
-    <nav>
-      <ul class="navigation-lists">
-        @for (item of menuItems; track $index) {
-          <li>
-            <a class="navigation-link" [routerLink]="item.link">{{ item.name }}</a>
-          </li>
-        }
-      </ul>
-    </nav>
-  </div>
-  <div class="search">
-    <input class="search-input" type="text" placeholder="Search for products..." />
-  </div>
-  <div class="buttons">
-    <button routerLink="/cart"><img src="/assets/svg/basket.svg" alt="basket" /></button>
-    <button routerLink="/login"><img src="/assets/svg/user.svg" alt="user" /></button>
+  <div class="header-wrapper">
+    <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
+    <div class="navigation">
+      <nav>
+        <ul class="navigation-lists">
+          @for (item of menuItems(); track $index) {
+            <li>
+              <a class="navigation-link" [routerLink]="item.link">{{ item.name }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+    <div class="search">
+      <input class="search-input" #searchInput type="text" placeholder="Search for products..." />
+    </div>
+    <div class="buttons">
+      <button routerLink="/cart"><img src="/assets/svg/basket.svg" alt="basket" /></button>
+      <button routerLink="/login"><img src="/assets/svg/user.svg" alt="user" /></button>
+    </div>
   </div>
 </header>

@@ -71,6 +71,7 @@ export class FormRegisterComponent {
       );
     }
 
+    this.form.reset();
     this.btnText.set('Registered ♡');
   }
 }

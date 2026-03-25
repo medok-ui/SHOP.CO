@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { IProduct } from '../../interfaces/product.interface';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductService } from '../../service/product.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
@@ -10,9 +17,13 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   styleUrl: './recommendations.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecommendationsComponent {
+export class RecommendationsComponent implements OnInit {
   private productService = inject(ProductService);
-  private allRecommendedProducts = signal<IProduct[]>([]);
+  private destroyRef = inject(DestroyRef);
+
+  private allRecommendedProducts = computed(() =>
+    this.productService.filteredProducts().filter((p) => p.isNew),
+  );
 
   recommendedProducts = computed(() =>
     this.allRecommendedProducts().filter((t) => t.isTopSelling === true),
@@ -20,10 +31,6 @@ export class RecommendationsComponent {
   recommendedProductsItem = computed(() => this.recommendedProducts().slice(0, 4));
 
   ngOnInit() {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        this.allRecommendedProducts.set(products);
-      },
-    });
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 }

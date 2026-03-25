@@ -4,6 +4,7 @@ import {
   computed,
   effect,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +22,7 @@ import { IFilterOption } from './review-option.interface';
   styleUrl: './review-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReviewListComponent {
+export class ReviewListComponent implements OnInit {
   private productService = inject(ProductService);
 
   private readonly STEP = 6;

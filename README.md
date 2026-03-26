@@ -170,7 +170,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 
 | Code       | Effect                            |
 | ---------- | --------------------------------- |
-| `MedokTop` | Free delivery (delivery fee → $0) |
+| `SHOP.CO` | Free delivery (delivery fee → $0) |
 
 ---
 

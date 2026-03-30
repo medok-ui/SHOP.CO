@@ -168,15 +168,25 @@ src/
 
 ## 🧪 Promo Codes
 
-| Code            | Effect        |
-| --------------- | ------------- |
-| `shop.co`       | Free delivery |
-| `Medok2010`     | Free delivery |
-| `WhiteMaks`     | Free delivery |
-| `Baryl348`      | Free delivery |
-| `WINTER2026`    | Free delivery |
-| `HELLO_ANGULAR` | Free delivery |
-| `DISCOUNT50`    | Free delivery |
+| Code           | Effect        |
+| -------------- | ------------- |
+| `shop.co`      | Free delivery |
+| `Medok2010`    | Free delivery |
+| `WhiteMaks`    | Free delivery |
+| `Baryl348`     | Free delivery |
+| `WINTER2026`   | Free delivery |
+| `HELLO_ANGULAR`| Free delivery |
+| `DISCOUNT50`   | Free delivery |
+
+---
+
+## 🔮 What's Coming Next
+
+- [x] **Product Catalog page** — full browsable catalog with filters
+- [x] **Working search** — implemented via ProductService signals
+- [x] **User auth page** — login/register functionality
+- [ ] **Full responsive layout** — mobile & tablet support (in progress)
+- [x] **API integration** — MockAPI integration complete
 
 ---
 

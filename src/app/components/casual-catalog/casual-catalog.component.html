@@ -1,0 +1,11 @@
+<section class="casual">
+  <span class="casual-title">Casual</span>
+
+  <ul class="casual-catalog">
+    @for (item of displayedProducts(); track item.id) {
+      <li class="product-card"><app-product-card [product]="item" /></li>
+    }
+  </ul>
+
+  <app-pagination />
+</section>

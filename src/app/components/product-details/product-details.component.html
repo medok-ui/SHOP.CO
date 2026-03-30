@@ -3,12 +3,22 @@
     <ul class="product-details-gallery__thumbnails">
       @for (item of product()?.thumbnails; track $index) {
         <li>
-          <img class="product-thumbnails__img" [src]="product()?.image" [alt]="product()?.name" />
+          <img
+            class="product-thumbnails__img"
+            [src]="product()?.image"
+            (error)="updateUrl($event)"
+            [alt]="product()?.name"
+          />
         </li>
       }
     </ul>
     <div>
-      <img class="product-details-gallery__main" [src]="product()?.image" [alt]="product()?.name" />
+      <img
+        class="product-details-gallery__main"
+        [src]="product()?.image"
+        (error)="updateUrl($event)"
+        [alt]="product()?.name"
+      />
     </div>
   </div>
   <div class="product-details-info">
@@ -78,7 +88,11 @@
           <img src="/assets/svg/plus.svg" alt="plus" />
         </button>
       </div>
-      <button class="product-details-add-btn" (click)="onAddCart()">{{ textBtn }}</button>
+      <button class="product-details-add-btn" (click)="onAddCart()">Add to Cart</button>
     </div>
   </div>
 </section>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" alertText="Added" />
+}

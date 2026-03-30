@@ -1,0 +1,9 @@
+<div class="toast-container">
+  <div class="toast" #toast [class.hidden]="!isVisible()">
+    <div class="toast-content">
+      <h3 class="toast-title">Attention!</h3>
+      <span class="toast-description">{{ alertText() }}</span>
+    </div>
+    <button (click)="onClose()" class="toast-btn">X</button>
+  </div>
+</div>

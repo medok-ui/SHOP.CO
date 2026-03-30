@@ -1,37 +1,35 @@
 # 🛍️ Shop.co — E-Commerce Demo App
 
-> ⚠️ **This is a DEMO / Work-In-Progress version.** The project is actively being developed — many improvements, fixes, and new pages are still coming. Do not treat this as a final product.
+> ⚠️ **This is a DEMO / Work-In-Progress version.** The project is actively being developed — improvements, fixes, and new pages are still coming.
 
 ---
 
 ## 🎨 Design
 
-The app is based on a Figma community template:
-**[E-commerce Website Template — Figma](https://www.figma.com/design/UsntLLhWyGh8PoAk0WQfop/E-commerce-Website-Template--Freebie---Community-?node-id=39-1402&p=f&t=XbTCbPf5XJwEkkw7-0)**
+Based on a Figma community template:  
+**[E-commerce Website Template — Figma](https://www.figma.com/design/UsntLLhWyGh8PoAk0WQfop/E-commerce-Website-Template--Freebie---Community-?node-id=39-1402)**
 
 ---
 
 ## 📌 About the Project
 
-**Shop.co** is a modern frontend e-commerce application built with **Angular 17+** using the latest framework features: Signals, computed state, `OnPush` change detection, and lazy-loaded routes. The project demonstrates a clean component-driven architecture for a clothing store.
-
-The app currently includes a **Home page**, a **Product Detail page**, and a **Cart page**, with a **Promo/Discount** system already built in.
+**Shop.co** is a modern frontend e-commerce application built with **Angular 21** using the latest framework features: Signals, computed state, `OnPush` change detection, and lazy-loaded routes.
 
 ---
 
 ## 🚀 Tech Stack
 
-| Technology      | Purpose                   |
-| --------------- | ------------------------- |
-| Angular 17+     | Core framework            |
-| TypeScript      | Language                  |
-| SCSS            | Styling                   |
-| Angular Signals | Reactive state management |
-| Angular Router  | Navigation & lazy loading |
-| FormsModule     | Form handling (ngModel)   |
-| localStorage    | Cart persistence          |
-| Reactive Forms  | Form validation & auth    |
-| Route Guards    | Protected routes          |
+| Technology      | Purpose                       |
+| --------------- | ----------------------------- |
+| Angular 21      | Core framework                |
+| TypeScript      | Language                      |
+| SCSS            | Styling                       |
+| Angular Signals | Reactive state management     |
+| Angular Router  | Navigation & lazy loading     |
+| Reactive Forms  | Form validation & auth        |
+| FormsModule     | ngModel bindings              |
+| localStorage    | Cart & auth persistence       |
+| MockAPI         | REST API for products/reviews |
 
 ---
 
@@ -41,183 +39,175 @@ The app currently includes a **Home page**, a **Product Detail page**, and a **C
 src/
 ├── app/
 │   ├── components/
-│   │   ├── header/                  # Navigation header
-│   │   ├── footer/                  # Footer with newsletter signup
-│   │   ├── home-hero/               # Hero section with stats
-│   │   ├── brands-section/          # Animated brands bar
-│   │   ├── product-card/            # Reusable product card
-│   │   ├── product-section/         # New Arrivals section
-│   │   ├── product-top-selling/     # Top Selling section
-│   │   ├── product-details/         # Full product detail view
-│   │   ├── dress-style-browse/      # Browse by style (Casual, Formal, etc.)
-│   │   ├── testimonials/            # Customer reviews carousel
-│   │   ├── review-list/             # Filterable review list
-│   │   ├── recommendations/         # Recommended products
-│   │   ├── cart-item/               # Single cart item
+│   │   ├── header/                  # Sticky navigation with live search
+│   │   ├── footer/                  # Footer with reactive newsletter form
+│   │   ├── home-hero/               # Hero section with store stats
+│   │   ├── brands-section/          # Animated scrolling brands bar
+│   │   ├── product-card/            # Reusable product card with fallback image
+│   │   ├── product-section/         # New Arrivals grid with load-more
+│   │   ├── product-top-selling/     # Top Selling grid with load-more
+│   │   ├── product-details/         # Full product view (colors, sizes, qty)
+│   │   ├── casual-catalog/          # Catalog product grid with pagination
+│   │   ├── filters-catalog/         # Sidebar filters (price, color, size)
+│   │   ├── pagination/              # Reusable pagination component
+│   │   ├── dress-style-browse/      # Browse by style cards
+│   │   ├── testimonials/            # Scrollable reviews carousel
+│   │   ├── review-list/             # Filterable & sortable review list
+│   │   ├── recommendations/         # Recommended products section
+│   │   ├── cart-item/               # Single cart item with qty controls
 │   │   ├── cart-list/               # Cart items list
-│   │   ├── order-summary/           # Order total & promo code
-│   │   ├── header-login/            # Auth navigation header
-│   │   ├── form-login/              # Login form
-│   │   └── form-register/           # Register form
+│   │   ├── order-summary/           # Order total, promo code input
+│   │   ├── header-login/            # Auth page header
+│   │   ├── form-login/              # Login form (reactive)
+│   │   └── form-register/           # Register form with password match
 │   ├── pages/
 │   │   ├── home/                    # Home page
+│   │   ├── catalog/                 # Catalog page with filters
 │   │   ├── product-detail/          # Product detail page
 │   │   ├── cart/                    # Cart page
 │   │   ├── login/                   # Login page
 │   │   └── register/                # Register page
 │   ├── guards/
-│   │   └── login-guard.ts           # Route protection guard
+│   │   └── login-guard.ts           # Route protection guard (prepared)
 │   ├── interfaces/                  # TypeScript interfaces
-│   ├── data/                        # Static mock data
 │   ├── service/
-│   │   ├── cart.service.ts          # Cart logic & computed totals
-│   │   └── product.service.ts       # API integration
+│   │   ├── cart.service.ts          # Cart logic, computed totals, promo codes
+│   │   ├── catalog-state.service.ts # Catalog filters, pagination state
+│   │   └── product.service.ts       # HTTP API + search query signal
 │   └── shared/
-│       ├── button/                  # Reusable button component
-│       └── button-login/            # Auth button component
+│       ├── button/                  # Reusable outline button
+│       ├── button-login/            # Auth submit button
+│       └── components/
+│           └── alert/               # Toast alert with auto-dismiss
 ```
 
 ---
 
 ## 📄 Pages
 
-### 🏠 Home Page (`/home`)
-- Hero section with CTA button and store stats (200+ brands, 2000+ products, 30K+ customers)
-- Animated brands bar (Calvin Klein, Gucci, Prada, Versace, Zara)
-- **New Arrivals** product grid with "View All" load-more pagination
-- **Top Selling** product grid with "View All" load-more pagination
-- Browse by Dress Style cards (Casual, Formal, Party, Gym)
-- Customer testimonials carousel with left/right scroll
-- Newsletter signup embedded in the footer
+### 🏠 Home (`/home`)
 
----
+- Hero section with CTA and stats
+- Animated brands bar
+- **New Arrivals** grid (load-more, search-aware)
+- **Top Selling** grid (load-more, filtered by `isTopSelling`)
+- Browse by Dress Style cards
+- Testimonials carousel
+- Newsletter with reactive form validation + toast feedback
 
-### 🧾 Product Detail Page (`/product/:id`)
-- Product gallery with thumbnail list
-- Color selector with active state highlight
-- Size selector: Small / Medium / Large / X-Large
+### 📦 Catalog (`/catalog`)
+
+- Sidebar filters: price range slider, color picker (50 colors), size selector
+- Products grid with pagination (9 per page)
+- "Apply Filter" with validation — shows toast if color or size not selected
+- Filter state managed via `CatalogStateService`
+
+### 🧾 Product Detail (`/product/:id`)
+
+- Product gallery with thumbnails and fallback image on error
+- Color & size selectors with active state
 - Quantity control (+/−)
-- "Add to Cart" button with confirmation feedback text
-- Filterable & sortable review list (Most Recent / Highest Rating / Lowest Rating)
-- Delete/hide review functionality
-- Recommended products section at the bottom
+- Add to Cart → redirects to cart
+- Filterable review list (Most Recent / Highest / Lowest rating)
+- Recommended products section
 
----
+### 🛒 Cart (`/cart`)
 
-### 🛒 Cart Page (`/cart`)
-- Full cart item list with per-item quantity controls
-- Remove items from cart
+- Cart items with per-item quantity and remove
 - Order summary: Subtotal, Discount, Delivery Fee, Total
-- Promo code input — enter `MedokTop` to unlock **free delivery**
-- Cart state persisted in `localStorage` — survives page refresh
-- Empty cart state with friendly message
+- Promo code input (see codes below)
+- Cart persisted in `localStorage`
+- Empty cart state with alert toast
 
----
+### 🔐 Login (`/login`)
 
-### 📝 Register Page (`/register`)
-- Register form with validation (login, email, password, confirm password)
-- Password match validation via custom validator
-- "Accept Terms of Service" checkbox — required to submit
-- Saves credentials to `localStorage` on success
+- Reactive form with validation
+- Reads credentials from `localStorage` set at registration
+- Redirects to `/home` on success
+- Shows toast on invalid credentials
 
----
+### 📝 Register (`/register`)
 
-### 🔐 Login Page (`/login`)
-- Login form with validation (login, password)
-- "Confirm login" checkbox — required to submit
-- Redirects to `/home` on successful auth
-- Protected by route guard — authenticated users skip this page
+- Login, email, password + confirm password with match validator
+- Accept Terms checkbox required
+- Saves credentials to `localStorage`
+- Shows success toast on completion
 
 ---
 
 ## 🔧 Key Features
 
-- **Angular Signals** — all reactive state managed via `signal()` and `computed()`
-- **OnPush Change Detection** — applied across all components for performance
-- **Lazy-loaded routes** — each page is loaded on demand
-- **Cart persistence** — cart state saved to `localStorage`
-- **Promo code system** — working discount code removes delivery fee
-- **Review system** — sortable by date/rating, deletable, with load-more pagination
-- **Route Guards** — protected routes redirect unauthenticated users to login
-- **Auth system** — register/login with localStorage persistence
+- **Angular Signals** — reactive state via `signal()` and `computed()` throughout
+- **OnPush Change Detection** — applied on all components
+- **Lazy-loaded routes** — all pages loaded on demand
+- **Live search** — debounced header search filters products via `ProductService`
+- **Catalog filters** — price, color, size with `CatalogStateService`
+- **Pagination** — `CatalogStateService` handles page/pageSize state
+- **Toast alert system** — `AlertComponent` with auto-dismiss after 3s, slide animation
+- **Cart persistence** — `localStorage` survives page refresh
+- **Promo code system** — multiple codes, removes delivery fee
+- **Fallback images** — `(error)` handler replaces broken images with SVG placeholder
+- **Route guard** — `loginGuard` protects all routes except `/login` and `/register`
 
 ---
 
 ## 🗺️ Routing
 
 ```
-/             → redirects to /login
-/login        → Login page
-/register     → Register page
-/home         → Home page
-/product/:id  → Product detail page
-/cart         → Cart page
-/catalog      → Product catalog page (coming soon)
-**            → redirects to /home
+/             → /login
+/login        → Login page (public)
+/register     → Register page (public)
+/home         → Home page (protected)
+/product/:id  → Product detail (protected)
+/catalog      → Catalog with filters (protected)
+/cart         → Cart page (protected)
+**            → /home
 ```
 
 ---
 
-## 📦 Mock Data
+## 🧪 Promo Codes
 
-The app ships with **13 mock products** — t-shirts, jeans, shorts, polos, and shirts. Each product carries: name, image, thumbnails, price, optional discount, available colors, sizes, rating, review count, and boolean flags for `isNew` / `isTopSelling`.
-
-Reviews include **21 entries** with names, star ratings, verified badge status, and dates.
-
----
-
-## 🧪 Promo Code
-
-| Code       | Effect                            |
-| ---------- | --------------------------------- |
-| `MedokTop` | Free delivery (delivery fee → $0) |
-
----
-
-## 🔮 What's Coming Next
-
-> This is an early demo. A lot is still planned:
-
-- [ ] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
-- [X] **Working search** — header search bar is UI-only right now
-- [X] **User auth page** — login/register UI
-- [ ] **Full responsive layout** — mobile & tablet support
-- [X] **API integration** — replace all mock data with real backend calls
+| Code            | Effect        |
+| --------------- | ------------- |
+| `shop.co`       | Free delivery |
+| `Medok2010`     | Free delivery |
+| `WhiteMaks`     | Free delivery |
+| `Baryl348`      | Free delivery |
+| `WINTER2026`    | Free delivery |
+| `HELLO_ANGULAR` | Free delivery |
+| `DISCOUNT50`    | Free delivery |
 
 ---
 
 ## 🏃 Getting Started
 
 ```bash
-# Clone the repository
 git clone https://github.com/medok-ui/SHOP.CO.git
-
-# Install dependencies
+cd SHOP.CO
 npm install
-
-# Start development server
 ng serve
-
-# Open in browser
-http://localhost:4200
+# → http://localhost:4200
 ```
+
+> To access protected pages, first register at `/register`, then log in at `/login`.
 
 ---
 
-## 💡 Developer Notes
+## 🔮 Coming Next
 
-- Fonts (Satoshi, DM Sans, Integral CF) are loaded locally from `/assets/fonts/`
-- SVG icons live in `/assets/svg/`
-- Product images in `/assets/images/products/`
-- Brand logos in `/assets/images/brands/`
-- Style category backgrounds in `/assets/background-card/`
+- [x] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
+- [x] **Working search** — header search bar is UI-only right now
+- [x] **User auth page** — login/register UI
+- [ ] **Full responsive layout** — mobile & tablet support
+- [x] **API integration** — replace all mock data with real backend calls
 
 ---
 
 ## 📝 License
 
-This project is for educational and portfolio purposes. Not intended for commercial use in its current state.
+Educational / portfolio project. Not intended for commercial use.
 
 ---
 
-_Built with ❤️ using Angular Signals — still a work in progress, but growing fast._
+_Built with ❤️ using Angular Signals — actively growing._

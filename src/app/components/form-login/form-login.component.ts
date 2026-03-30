@@ -1,17 +1,19 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-form-login',
-  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule],
+  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
   templateUrl: './form-login.component.html',
   styleUrl: './form-login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormLoginComponent {
   private route = inject(Router);
+  isAlert = signal<boolean>(false);
 
   form = new FormGroup({
     login: new FormControl('', {
@@ -41,6 +43,6 @@ export class FormLoginComponent {
       }
     }
 
-    return alert('Invalid login or password. Please check your credentials and try again.');
+    return this.isAlert.set(true);
   }
 }

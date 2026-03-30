@@ -1,0 +1,55 @@
+<aside class="aside">
+  <form>
+    <div class="grid-aside">
+      <div class="title-aside">
+        <h4>Filters</h4>
+        <button><img src="/assets/svg/filter.svg" alt="filter-button" /></button>
+      </div>
+      <hr class="hr-aside" />
+      <div class="price-aside">
+        <span class="title-price"> Price </span>
+        <div class="slider-wrap">
+          <input class="dual" #inputRange type="range" id="min" min="0" max="600" value="150" />
+          <div class="dual-values">
+            <span>$0</span>
+            <span>${{ selectedPrice() }}</span>
+            <span>$600</span>
+          </div>
+        </div>
+      </div>
+      <hr class="hr-aside" />
+      <div class="colors-aside">
+        <span class="title-colors"> Colors </span>
+        <ul class="colors">
+          @for (color of colors(); track $index) {
+            <li (click)="onColorSelect(color)">
+              <button
+                class="color-btn"
+                [class.active]="colorActive().includes(color)"
+                [style.background]="color"
+              ></button>
+            </li>
+          }
+        </ul>
+      </div>
+      <hr class="hr-aside" />
+      <div class="size-aside">
+        <span class="title-size"> Size </span>
+        <ul class="sizes">
+          @for (size of sizes(); track $index) {
+            <li (click)="onSizeSelect(size)">
+              <button class="size-btn" [class.active]="sizeActive().includes(size)">
+                {{ size }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+      <button (click)="onSubmit()" appButtonLogin>Apply Filter</button>
+    </div>
+  </form>
+</aside>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}

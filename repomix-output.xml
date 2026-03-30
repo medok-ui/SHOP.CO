@@ -57,6 +57,7 @@ public/assets/images/brands/gucci.svg
 public/assets/images/brands/prada.svg
 public/assets/images/brands/versace.svg
 public/assets/images/brands/zara.svg
+public/assets/images/products/fallback.svg
 public/assets/images/products/product-1.png
 public/assets/images/products/product-10.png
 public/assets/images/products/product-11.png
@@ -113,11 +114,18 @@ src/app/components/cart-item/cart-item.component.ts
 src/app/components/cart-list/cart-list.component.html
 src/app/components/cart-list/cart-list.component.scss
 src/app/components/cart-list/cart-list.component.ts
+src/app/components/casual-catalog/casual-catalog.component.html
+src/app/components/casual-catalog/casual-catalog.component.scss
+src/app/components/casual-catalog/casual-catalog.component.ts
 src/app/components/dress-style-browse/dress-style-browse.component.html
 src/app/components/dress-style-browse/dress-style-browse.component.scss
 src/app/components/dress-style-browse/dress-style-browse.component.ts
 src/app/components/dress-style-browse/dress-style-browse.data.ts
 src/app/components/dress-style-browse/dress-style-browse.interface.ts
+src/app/components/filters-catalog/colors-data.ts
+src/app/components/filters-catalog/filters-catalog.component.html
+src/app/components/filters-catalog/filters-catalog.component.scss
+src/app/components/filters-catalog/filters-catalog.component.ts
 src/app/components/footer/footer-data/footer-links.data.ts
 src/app/components/footer/footer-data/footer-payment-methods.data.ts
 src/app/components/footer/footer-data/social-links.data.ts
@@ -152,6 +160,9 @@ src/app/components/home-hero/stat-item.interface.ts
 src/app/components/order-summary/order-summary.component.html
 src/app/components/order-summary/order-summary.component.scss
 src/app/components/order-summary/order-summary.component.ts
+src/app/components/pagination/pagination.component.html
+src/app/components/pagination/pagination.component.scss
+src/app/components/pagination/pagination.component.ts
 src/app/components/product-card/product-card.component.html
 src/app/components/product-card/product-card.component.scss
 src/app/components/product-card/product-card.component.ts
@@ -190,6 +201,9 @@ src/app/interfaces/review.interface.ts
 src/app/pages/cart/cart.component.html
 src/app/pages/cart/cart.component.scss
 src/app/pages/cart/cart.component.ts
+src/app/pages/catalog/catalog.component.html
+src/app/pages/catalog/catalog.component.scss
+src/app/pages/catalog/catalog.component.ts
 src/app/pages/home/home.component.html
 src/app/pages/home/home.component.scss
 src/app/pages/home/home.component.ts
@@ -203,6 +217,7 @@ src/app/pages/register/register.component.html
 src/app/pages/register/register.component.scss
 src/app/pages/register/register.component.ts
 src/app/service/cart.service.ts
+src/app/service/catalog-state.service.ts
 src/app/service/product.service.ts
 src/app/shared/button-login/button-login.component.html
 src/app/shared/button-login/button-login.component.scss
@@ -210,6 +225,9 @@ src/app/shared/button-login/button-login.component.ts
 src/app/shared/button/button.component.html
 src/app/shared/button/button.component.scss
 src/app/shared/button/button.component.ts
+src/app/shared/components/alert/alert.component.html
+src/app/shared/components/alert/alert.component.scss
+src/app/shared/components/alert/alert.component.ts
 src/index.html
 src/main.server.ts
 src/main.ts
@@ -222,6 +240,778 @@ tsconfig.spec.json
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path="public/assets/images/products/fallback.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect width="100%" height="100%" fill="#DDDDDD"/><path fill="#999999" d="M141.86 281.445h4.98v30.37h-2.9q-.67 0-1.13-.22-.45-.22-.87-.75l-15.85-20.24q.12 1.39.12 2.56v18.65h-4.97v-30.37h2.96q.35 0 .62.04.26.03.46.12.2.1.39.27.19.18.42.48l15.92 20.33q-.07-.74-.11-1.45-.04-.72-.04-1.33zm20.45 8.49q2.4 0 4.36.77 1.96.78 3.36 2.21t2.15 3.49q.76 2.05.76 4.59 0 2.57-.76 4.62-.75 2.06-2.15 3.51t-3.36 2.23-4.36.78q-2.41 0-4.39-.78-1.97-.78-3.37-2.23-1.39-1.45-2.16-3.51-.77-2.05-.77-4.62 0-2.54.77-4.59.77-2.06 2.16-3.49 1.4-1.43 3.37-2.21 1.98-.77 4.39-.77m0 18.2q2.69 0 3.98-1.8 1.29-1.81 1.29-5.29 0-3.49-1.29-5.32-1.29-1.82-3.98-1.82-2.73 0-4.04 1.83-1.31 1.84-1.31 5.31 0 3.46 1.31 5.28 1.31 1.81 4.04 1.81m31.29-26.69v30.37h-5.67v-30.37zm11.15 30.37h-5.18v-21.55h3.17q1.01 0 1.32.95l.34 1.59q.56-.63 1.18-1.15.62-.53 1.33-.9.7-.38 1.51-.6t1.77-.22q2.04 0 3.35 1.1t1.97 2.93q.5-1.07 1.26-1.84.75-.76 1.65-1.25.91-.48 1.93-.71 1.01-.23 2.04-.23 1.79 0 3.17.54 1.39.55 2.34 1.6.94 1.05 1.43 2.56.5 1.51.5 3.47v13.71h-5.19v-13.71q0-2.06-.9-3.1-.91-1.04-2.65-1.04-.8 0-1.48.27-.68.28-1.2.79-.51.51-.8 1.29-.3.78-.3 1.79v13.71h-5.21v-13.71q0-2.17-.87-3.15-.87-.99-2.55-.99-1.13 0-2.11.56-.98.55-1.82 1.52zm41.37-5.57v-3.63q-2.24.11-3.78.39-1.53.28-2.45.72-.93.45-1.33 1.03-.4.59-.4 1.28 0 1.37.81 1.96t2.11.59q1.6 0 2.77-.58 1.16-.58 2.27-1.76m-10.96-11.31-.92-1.66q3.71-3.41 8.94-3.41 1.89 0 3.38.62 1.5.62 2.52 1.73 1.03 1.1 1.57 2.63.53 1.53.53 3.36v13.61h-2.35q-.73 0-1.13-.22t-.63-.89l-.46-1.56q-.82.74-1.6 1.29-.78.56-1.62.94t-1.79.58q-.96.2-2.11.2-1.37 0-2.52-.37-1.16-.37-2-1.1-.84-.74-1.3-1.83t-.46-2.54q0-.82.27-1.63t.89-1.54q.62-.74 1.61-1.39t2.43-1.13q1.43-.49 3.35-.79 1.91-.31 4.36-.37v-1.26q0-2.16-.92-3.2t-2.67-1.04q-1.26 0-2.09.29-.83.3-1.46.67-.63.36-1.14.66-.52.29-1.15.29-.54 0-.92-.28-.38-.29-.61-.66m28.77 5.58q.97 0 1.68-.26.72-.26 1.19-.73.47-.46.71-1.11t.24-1.43q0-1.59-.95-2.53-.96-.93-2.87-.93t-2.86.93q-.96.94-.96 2.53 0 .76.24 1.41t.72 1.12q.47.48 1.19.74.73.26 1.67.26m5.86 12.27q0-.63-.38-1.03t-1.03-.62-1.52-.33q-.87-.1-1.85-.16-.97-.05-2.01-.09t-2.03-.17q-.86.48-1.4 1.14-.53.65-.53 1.51 0 .57.28 1.06.29.49.91.85.61.36 1.6.56t2.42.2q1.45 0 2.5-.23 1.05-.22 1.73-.6.68-.39 1-.93.31-.53.31-1.16m-1.03-21.78h6.2v1.93q0 .92-1.12 1.13l-1.93.36q.44 1.11.44 2.44 0 1.59-.64 2.89-.64 1.29-1.77 2.19-1.14.9-2.68 1.4-1.54.49-3.33.49-.63 0-1.22-.06-.58-.07-1.15-.17-1.01.61-1.01 1.36 0 .65.6.96.6.3 1.58.43.99.13 2.25.16t2.58.13q1.33.11 2.59.37t2.24.83q.99.57 1.59 1.54.6.98.6 2.51 0 1.43-.7 2.78-.71 1.34-2.04 2.39-1.34 1.05-3.28 1.69t-4.42.64q-2.43 0-4.24-.47t-3-1.26q-1.2-.79-1.79-1.82t-.59-2.14q0-1.51.92-2.53.91-1.02 2.51-1.63-.86-.44-1.37-1.17-.5-.74-.5-1.94 0-.48.18-.99.17-.52.52-1.02.35-.51.87-.96.53-.45 1.24-.81-1.64-.88-2.57-2.35-.94-1.47-.94-3.44 0-1.6.65-2.89.64-1.29 1.78-2.2 1.14-.92 2.71-1.4 1.56-.48 3.41-.48 1.39 0 2.61.28 1.21.28 2.22.83m13.57 7.56h9.78q0-1.01-.28-1.9t-.85-1.57q-.57-.67-1.44-1.06t-2.03-.39q-2.24 0-3.53 1.29-1.3 1.28-1.65 3.63m13.23 3.13h-13.34q.13 1.66.59 2.86.46 1.21 1.22 2 .75.79 1.79 1.18 1.04.38 2.3.38t2.18-.29q.91-.29 1.59-.65.69-.36 1.2-.65.51-.3 1-.3.65 0 .96.49l1.49 1.89q-.86 1-1.93 1.69-1.07.68-2.23 1.09-1.17.41-2.38.58-1.2.17-2.34.17-2.25 0-4.18-.75t-3.36-2.21-2.24-3.61q-.82-2.15-.82-4.99 0-2.2.71-4.14.71-1.95 2.05-3.38 1.33-1.44 3.25-2.28t4.34-.84q2.04 0 3.76.65t2.96 1.9 1.94 3.07q.71 1.81.71 4.14 0 1.18-.26 1.59-.25.41-.96.41m22.51-1.35h9.66l-3.7-10.1q-.27-.67-.56-1.59-.3-.93-.59-2-.27 1.07-.57 2.01-.29.93-.57 1.62zm7.71-18.9 11.92 30.37h-4.36q-.74 0-1.2-.37t-.69-.91l-2.27-6.2H316.6l-2.27 6.2q-.17.48-.65.88t-1.2.4h-4.41l11.95-30.37zm29.59 8.82h4.09l-8.55 21.55h-4.7l-8.55-21.55h4.29q.58 0 .97.28.39.27.52.69l4.16 11.51q.33 1.01.58 1.97.26.97.44 1.93.21-.96.47-1.93.25-.96.61-1.97l4.24-11.51q.14-.42.52-.69.38-.28.91-.28m18.22 15.98v-3.63q-2.24.11-3.78.39-1.53.28-2.45.72-.93.45-1.33 1.03-.4.59-.4 1.28 0 1.37.81 1.96t2.11.59q1.6 0 2.77-.58 1.16-.58 2.27-1.76m-10.96-11.31-.92-1.66q3.71-3.41 8.94-3.41 1.89 0 3.38.62 1.5.62 2.52 1.73 1.03 1.1 1.57 2.63.53 1.53.53 3.36v13.61h-2.35q-.73 0-1.13-.22t-.63-.89l-.46-1.56q-.82.74-1.6 1.29-.78.56-1.62.94t-1.79.58q-.96.2-2.11.2-1.37 0-2.52-.37-1.16-.37-2-1.1-.84-.74-1.3-1.83t-.46-2.54q0-.82.27-1.63t.89-1.54q.62-.74 1.61-1.39t2.43-1.13q1.43-.49 3.35-.79 1.91-.31 4.36-.37v-1.26q0-2.16-.92-3.2t-2.67-1.04q-1.26 0-2.09.29-.83.3-1.46.67-.63.36-1.14.66-.52.29-1.15.29-.54 0-.92-.28-.38-.29-.61-.66m21.06-4.67h5.21v21.55h-5.21zm5.93-6.28q0 .68-.28 1.26-.27.59-.72 1.03t-1.06.71q-.61.26-1.3.26-.68 0-1.27-.26-.6-.27-1.04-.71t-.71-1.03q-.26-.58-.26-1.26 0-.69.26-1.3.27-.61.71-1.05t1.04-.7q.59-.26 1.27-.26.69 0 1.3.26t1.06.7.72 1.05q.28.61.28 1.3m4.64-3.38h5.18v31.21h-5.18zm21.75 25.64v-3.63q-2.24.11-3.78.39-1.53.28-2.45.72-.93.45-1.33 1.03-.4.59-.4 1.28 0 1.37.81 1.96t2.11.59q1.6 0 2.77-.58 1.16-.58 2.27-1.76m-10.96-11.31-.92-1.66q3.71-3.41 8.94-3.41 1.89 0 3.38.62 1.5.62 2.52 1.73 1.03 1.1 1.57 2.63.53 1.53.53 3.36v13.61h-2.35q-.73 0-1.13-.22t-.63-.89l-.46-1.56q-.82.74-1.6 1.29-.78.56-1.62.94t-1.79.58q-.96.2-2.11.2-1.37 0-2.52-.37-1.16-.37-2-1.1-.84-.74-1.3-1.83t-.46-2.54q0-.82.27-1.63t.89-1.54q.62-.74 1.61-1.39t2.43-1.13q1.43-.49 3.35-.79 1.91-.31 4.36-.37v-1.26q0-2.16-.92-3.2t-2.67-1.04q-1.26 0-2.09.29-.83.3-1.46.67-.63.36-1.14.66-.52.29-1.15.29-.54 0-.92-.28-.38-.29-.61-.66m26.08 1.63v9.66q.89 1.07 1.93 1.52 1.03.44 2.19.44 1.2 0 2.15-.43.96-.43 1.63-1.35.67-.91 1.03-2.33t.36-3.39q0-3.55-1.18-5.13-1.18-1.59-3.38-1.59-1.49 0-2.61.68-1.11.69-2.12 1.92m0-15.96v12.31q1.31-1.37 2.89-2.17 1.59-.81 3.62-.81 1.87 0 3.37.73 1.51.74 2.57 2.11 1.06 1.38 1.62 3.33.57 1.95.57 4.39 0 2.63-.65 4.77t-1.86 3.66q-1.21 1.53-2.91 2.36-1.7.85-3.78.85-1.01 0-1.82-.2-.82-.2-1.52-.56-.69-.36-1.27-.87-.57-.52-1.1-1.15l-.23 1.45q-.13.55-.43.78-.31.23-.83.23h-3.42v-31.21zm18.71 0h5.19v31.21h-5.19zm14.47 17.96h9.79q0-1.01-.28-1.9-.29-.89-.85-1.57-.57-.67-1.44-1.06t-2.03-.39q-2.25 0-3.54 1.29-1.29 1.28-1.65 3.63m13.23 3.13h-13.33q.12 1.66.59 2.86.46 1.21 1.21 2 .76.79 1.8 1.18 1.04.38 2.3.38t2.17-.29q.92-.29 1.6-.65t1.2-.65q.51-.3.99-.3.65 0 .97.49l1.49 1.89q-.86 1-1.93 1.69-1.07.68-2.24 1.09-1.16.41-2.37.58t-2.34.17q-2.25 0-4.18-.75t-3.36-2.21-2.25-3.61-.82-4.99q0-2.2.72-4.14.71-1.95 2.04-3.38 1.34-1.44 3.26-2.28t4.34-.84q2.03 0 3.75.65 1.73.65 2.97 1.9 1.23 1.25 1.94 3.07.7 1.81.7 4.14 0 1.18-.25 1.59t-.97.41"/></svg>
+</file>
+
+<file path="src/app/components/casual-catalog/casual-catalog.component.html">
+<section class="casual">
+  <span class="casual-title">Casual</span>
+
+  <ul class="casual-catalog">
+    @for (item of displayedProducts(); track item.id) {
+      <li class="product-card"><app-product-card [product]="item" /></li>
+    }
+  </ul>
+
+  <app-pagination />
+</section>
+</file>
+
+<file path="src/app/components/casual-catalog/casual-catalog.component.scss">
+.casual-title {
+  text-align: end;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.casual-catalog {
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  margin-bottom: 20px;
+}
+</file>
+
+<file path="src/app/components/casual-catalog/casual-catalog.component.ts">
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductService } from '../../service/product.service';
+import { PaginationComponent } from '../pagination/pagination.component';
+import { ProductCardComponent } from '../product-card/product-card.component';
+import { CatalogStateService } from './../../service/catalog-state.service';
+
+@Component({
+  selector: 'app-casual-catalog',
+  imports: [ProductCardComponent, PaginationComponent],
+  templateUrl: './casual-catalog.component.html',
+  styleUrl: './casual-catalog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CasualCatalogComponent implements OnInit {
+  private productService = inject(ProductService);
+  private catalogStateService = inject(CatalogStateService);
+  private destroyRef = inject(DestroyRef);
+
+  allProducts = this.productService.allProducts;
+  displayedProducts = this.catalogStateService.displayedProducts;
+
+  ngOnInit() {
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+  }
+}
+</file>
+
+<file path="src/app/components/filters-catalog/colors-data.ts">
+export const colors : string[] = [
+  "#000000", "#92400E", "#1E3A8A", "#854D0E", "#FFFFFF", "#A67B5B",
+  "#8B5A2B", "#5D3A1A", "#4682B4", "#36454F", "#2F4F4F", "#2C3E50",
+  "#B0C4DE", "#6B21A8", "#9D174D", "#166534", "#2C1810", "#4B5320",
+  "#2E8B57", "#CD5C5C", "#800080", "#556B2F", "#8B0000", "#191970",
+  "#B22222", "#FF6B6B", "#4ECDC4", "#45B7D1", "#708090", "#1B4D3E",
+  "#1B2A4A", "#A52A2A", "#DAA520", "#C0A080", "#B8860B", "#333333",
+  "#696969", "#E0E0E0", "#4A4A4A", "#F5F5DC", "#808080", "#ADD8E0",
+  "#FFB6C1", "#228B22", "#D2691E", "#2B3D50", "#FF0000", "#7F8C8D",
+  "#1A1A1A", "#4A3728"
+];
+</file>
+
+<file path="src/app/components/filters-catalog/filters-catalog.component.html">
+<aside class="aside">
+  <form>
+    <div class="grid-aside">
+      <div class="title-aside">
+        <h4>Filters</h4>
+        <button><img src="/assets/svg/filter.svg" alt="filter-button" /></button>
+      </div>
+      <hr class="hr-aside" />
+      <div class="price-aside">
+        <span class="title-price"> Price </span>
+        <div class="slider-wrap">
+          <input class="dual" #inputRange type="range" id="min" min="0" max="600" value="150" />
+          <div class="dual-values">
+            <span>$0</span>
+            <span>${{ selectedPrice() }}</span>
+            <span>$600</span>
+          </div>
+        </div>
+      </div>
+      <hr class="hr-aside" />
+      <div class="colors-aside">
+        <span class="title-colors"> Colors </span>
+        <ul class="colors">
+          @for (color of colors(); track $index) {
+            <li (click)="onColorSelect(color)">
+              <button
+                class="color-btn"
+                [class.active]="colorActive().includes(color)"
+                [style.background]="color"
+              ></button>
+            </li>
+          }
+        </ul>
+      </div>
+      <hr class="hr-aside" />
+      <div class="size-aside">
+        <span class="title-size"> Size </span>
+        <ul class="sizes">
+          @for (size of sizes(); track $index) {
+            <li (click)="onSizeSelect(size)">
+              <button class="size-btn" [class.active]="sizeActive().includes(size)">
+                {{ size }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+      <button (click)="onSubmit()" appButtonLogin>Apply Filter</button>
+    </div>
+  </form>
+</aside>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}
+</file>
+
+<file path="src/app/components/filters-catalog/filters-catalog.component.scss">
+.aside {
+  position: sticky;
+  align-self: flex-start;
+  top: 120px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px 24px;
+  width: 295px;
+}
+
+.grid-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title-aside {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.hr-aside {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.price-aside,
+.colors-aside,
+.size-aside {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.title-price,
+.title-colors,
+.title-size {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.dual {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #f0f0f0;
+  outline: none;
+  cursor: pointer;
+}
+
+.dual::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.dual::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000;
+  border: none;
+  margin-top: -8px;
+}
+
+.dual::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #f0f0f0;
+}
+
+.dual::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: #000;
+}
+
+.dual::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000;
+  border: none;
+}
+
+.dual-values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.colors,
+.sizes {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.color-btn {
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 37px;
+  height: 37px;
+  transition: 0.2s ease-in;
+}
+.color-btn.active {
+  border: 1px solid #000;
+  transform: scale(1.1);
+}
+.color-btn:hover {
+  border: 1px solid #000;
+  transform: scale(1.1);
+}
+
+.size-btn {
+  border-radius: 62px;
+  padding: 12px 24px;
+  background: #f0f0f0;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+.size-btn.active {
+  background: #000;
+  color: #fff;
+}
+.size-btn:hover {
+  transform: scale(0.9);
+}
+</file>
+
+<file path="src/app/components/filters-catalog/filters-catalog.component.ts">
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
+import { fromEvent, tap } from 'rxjs';
+import { CatalogStateService } from '../../service/catalog-state.service';
+import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
+import { colors } from './colors-data';
+
+@Component({
+  selector: 'app-filters-catalog',
+  imports: [ButtonLoginComponent, FormsModule, AlertComponent],
+  templateUrl: './filters-catalog.component.html',
+  styleUrl: './filters-catalog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FiltersCatalogComponent implements AfterViewInit {
+  private catalogStateService = inject(CatalogStateService);
+  private destroyRef = inject(DestroyRef);
+  private inputRange = viewChild.required<ElementRef<HTMLInputElement>>('inputRange');
+
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
+
+  sizes = signal<string[]>(['XX-Small', 'Small', 'Medium', 'Large', 'X-Large', 'XX-Large']);
+
+  colorActive = signal<string[]>([]);
+  sizeActive = signal<string[]>([]);
+
+  colors = signal<string[]>(colors);
+  selectedPrice = signal<number>(150);
+
+  ngAfterViewInit() {
+    const input = this.inputRange().nativeElement;
+    fromEvent(input, 'input')
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap((event) => {
+          const el = event.target as HTMLInputElement;
+          this.selectedPrice.set(+el.value);
+          this.updateSlider(el, +el.value);
+        }),
+      )
+      .subscribe();
+    input.dispatchEvent(new Event('input'));
+  }
+
+  private updateSlider(el: HTMLInputElement, value: number) {
+    this.catalogStateService.updateSlider(el, value);
+  }
+
+  onColorSelect(color: string) {
+    this.colorActive.update((currentColors) =>
+      currentColors.includes(color)
+        ? currentColors.filter((c: string) => c !== color)
+        : [...currentColors, color],
+    );
+  }
+
+  onSizeSelect(size: string) {
+    this.sizeActive.update((currentSize) =>
+      currentSize.includes(size) ? currentSize.filter((s) => s !== size) : [...currentSize, size],
+    );
+  }
+
+  onSubmit() {
+    if (this.colorActive().length === 0) {
+      this.isAlert.set(true);
+      return this.alertText.set('Please select a color');
+    }
+
+    if (this.sizeActive().length === 0) {
+      this.isAlert.set(true);
+      return this.alertText.set('Please select a size');
+    }
+
+    this.catalogStateService.colorActive.set(this.colorActive());
+    this.catalogStateService.sizeActive.set(this.sizeActive());
+    this.catalogStateService.selectedPrice.set(this.selectedPrice());
+
+    return this.catalogStateService.filteredProducts();
+  }
+}
+</file>
+
+<file path="src/app/components/pagination/pagination.component.html">
+<div class="pagination">
+  <button
+    class="pagination-btn"
+    (click)="setPage(state.currentPage() - 1)"
+    [disabled]="state.currentPage() === 1"
+  >
+    <img src="/assets/svg/arrow-left.svg" alt="arrow left" />Previous
+  </button>
+  <div class="pagination-pages">
+    @for (page of pages(); track page) {
+      <button
+        class="pagination-page-btn"
+        [class.active]="page === state.currentPage()"
+        (click)="setPage(page)"
+      >
+        {{ page }}
+      </button>
+    }
+  </div>
+  <button
+    class="pagination-btn"
+    (click)="setPage(state.currentPage() + 1)"
+    [disabled]="state.currentPage() === totalPages()"
+  >
+    Next <img src="/assets/svg/arrow-right.svg" alt="arrow right" />
+  </button>
+</div>
+</file>
+
+<file path="src/app/components/pagination/pagination.component.scss">
+.pagination {
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: var(--third-family);
+  font-weight: 800;
+  padding: 8px 14px;
+  background: #fff;
+
+  transition: 0.2s ease-in;
+}
+.pagination-btn:hover {
+  transform: scale(0.9);
+  background-color: #00b7ffb0;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.pagination-page-btn {
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.06);
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+
+  transition: 0.2s ease-in;
+}
+.pagination-page-btn:hover {
+  transform: scale(0.9);
+  background-color: #00b7ffb0;
+}
+
+.active {
+  transform: scale(0.9);
+  background-color: #00b7ffb0;
+}
+</file>
+
+<file path="src/app/components/pagination/pagination.component.ts">
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { CatalogStateService } from '../../service/catalog-state.service';
+
+@Component({
+  selector: 'app-pagination',
+  imports: [],
+  templateUrl: './pagination.component.html',
+  styleUrl: './pagination.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PaginationComponent {
+  protected state = inject(CatalogStateService);
+
+  totalPages = computed(() => {
+    const totalItems = this.state.allProducts().length;
+    return Math.ceil(totalItems / this.state.pageSize);
+  });
+
+  pages = computed(() => {
+    return Array.from({ length: this.totalPages() }, (_, i) => i + 1);
+  });
+
+  setPage(page: number) {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.state.setPage(page);
+    }
+  }
+}
+</file>
+
+<file path="src/app/pages/catalog/catalog.component.html">
+<app-header />
+<div class="container">
+  <div class="catalog-wrapper">
+    <app-filters-catalog />
+    <app-casual-catalog />
+  </div>
+</div>
+<app-footer />
+</file>
+
+<file path="src/app/pages/catalog/catalog.component.scss">
+.container {
+  max-width: 1410px;
+  margin: 0 auto;
+}
+
+.catalog-wrapper {
+  padding: 70px 0 80px 0;
+  display: flex;
+  gap: 80px;
+}
+</file>
+
+<file path="src/app/pages/catalog/catalog.component.ts">
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { FiltersCatalogComponent } from "../../components/filters-catalog/filters-catalog.component";
+import { CasualCatalogComponent } from '../../components/casual-catalog/casual-catalog.component';
+
+@Component({
+  selector: 'app-catalog',
+  imports: [FooterComponent, HeaderComponent, FiltersCatalogComponent, CasualCatalogComponent],
+  templateUrl: './catalog.component.html',
+  styleUrl: './catalog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CatalogComponent {}
+</file>
+
+<file path="src/app/service/catalog-state.service.ts">
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { ProductService } from './product.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CatalogStateService {
+  private productService = inject(ProductService);
+
+  colorActive = signal<string[]>([]);
+  sizeActive = signal<string[]>([]);
+  selectedPrice = signal<number>(150);
+
+  allProducts = this.productService.allProducts;
+
+  currentPage = signal(1);
+  pageSize = 9;
+
+  displayedProducts = computed(() => {
+    const products = this.filteredProducts();
+
+    const startIndex = (this.currentPage() - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    return products.slice(startIndex, endIndex);
+  });
+
+  setPage(page: number) {
+    this.currentPage.set(page);
+  }
+
+  updateSlider(el: HTMLInputElement, value: number) {
+    const pct = ((value - +el.min) / (+el.max - +el.min)) * 100;
+    el.style.background = `linear-gradient(to right, #000 ${pct}%, #f0f0f0 ${pct}%)`;
+  }
+
+  filteredProducts = computed(() => {
+    const colors = this.colorActive();
+    const sizes = this.sizeActive();
+    const price = this.selectedPrice();
+    const products = this.allProducts();
+
+    return products.filter((p) => {
+      const matchesColor = colors.length === 0 || p.colors.some((c) => colors.includes(c));
+      const matchesSize = sizes.length === 0 || p.sizes.some((s) => sizes.includes(s));
+      const matchesPrice = !price || p.price <= price;
+      return matchesColor && matchesSize && matchesPrice;
+    });
+  });
+}
+</file>
+
+<file path="src/app/shared/components/alert/alert.component.html">
+<div class="toast-container">
+  <div class="toast" #toast [class.hidden]="!isVisible()">
+    <div class="toast-content">
+      <h3 class="toast-title">Attention!</h3>
+      <span class="toast-description">{{ alertText() }}</span>
+    </div>
+    <button (click)="onClose()" class="toast-btn">X</button>
+  </div>
+</div>
+</file>
+
+<file path="src/app/shared/components/alert/alert.component.scss">
+:host {
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
+}
+.toast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  min-width: 280px;
+  max-width: 320px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.07),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  opacity: 1;
+  animation: slideIn 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transform: translateX(0);
+
+  transition:
+    transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    opacity 0.3s ease;
+}
+.toast.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(120%);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toast-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #451a03;
+}
+
+.toast-description {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.toast:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.toast-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-btn:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.toast-btn:active {
+  transform: scale(0.9);
+}
+</file>
+
+<file path="src/app/shared/components/alert/alert.component.ts">
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  OnInit,
+  output,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap, timer } from 'rxjs';
+
+@Component({
+  selector: 'app-alert',
+  imports: [],
+  templateUrl: './alert.component.html',
+  styleUrl: './alert.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AlertComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
+  closed = output<void>();
+
+  alertText = input.required();
+  isVisible = signal<boolean>(true);
+
+  ngOnInit() {
+    const timer$ = timer(3000)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(() => this.onClose()),
+      )
+      .subscribe();
+  }
+
+  onClose() {
+    this.isVisible.set(false);
+    setTimeout(() => this.closed.emit(), 300);
+  }
+}
+</file>
 
 <file path=".editorconfig">
 # Editor configuration, see https://editorconfig.org
@@ -1464,17 +2254,21 @@ export class FooterComponent {
 <file path="src/app/components/footer/newsletter-signup/newsletter.component.html">
 <div class="newsletter">
   <h2 class="newsletter-title">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
-  <form (ngSubmit)="onSubmit()" class="newsletter-form">
+  <form  [formGroup]="from" (ngSubmit)="onSubmit()" class="newsletter-form">
     <input
-      [(ngModel)]="emailInput"
+      formControlName="email"
       name="email"
       class="newsletter-input"
       type="email"
       placeholder="Enter your email address"
     />
-    <button class="newsletter-btn">{{ buttonText }}</button>
+    <button class="newsletter-btn">Subscribe to Newsletter</button>
   </form>
 </div>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}
 </file>
 
 <file path="src/app/components/footer/newsletter-signup/newsletter.component.scss">
@@ -1545,26 +2339,38 @@ export class FooterComponent {
 </file>
 
 <file path="src/app/components/footer/newsletter-signup/newsletter.component.ts">
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { AlertComponent } from '../../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-newsletter',
-  imports: [FormsModule],
+  imports: [FormsModule, AlertComponent, ReactiveFormsModule],
   templateUrl: './newsletter.component.html',
   styleUrl: './newsletter.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsletterSignupComponent {
-  emailInput = '';
-  buttonText = 'Subscribe to Newsletter';
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
+
+  from = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+  });
+
   onSubmit() {
-    if (this.emailInput.trim() === '') {
-      this.buttonText = 'Enter Email...';
-    } else {
-      this.buttonText = 'Subscribed!';
-      this.emailInput = '';
+    if (this.from.invalid) {
+      this.isAlert.set(true);
+      return this.alertText.set('Enter email!');
     }
+    this.isAlert.set(true);
+    this.alertText.set('You subscribed!');
   }
 }
 </file>
@@ -1606,6 +2412,13 @@ export class NewsletterSignupComponent {
     >Don't have an account? <a routerLink="/register" class="form-signin-link">Register</a></span
   >
 </section>
+
+@if (isAlert()) {
+  <app-alert
+    (closed)="isAlert.set(false)"
+    alertText="Invalid login or password. Please check your credentials and try again."
+  />
+}
 </file>
 
 <file path="src/app/components/form-login/form-login.component.scss">
@@ -1711,20 +2524,22 @@ export class NewsletterSignupComponent {
 </file>
 
 <file path="src/app/components/form-login/form-login.component.ts">
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-form-login',
-  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule],
+  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
   templateUrl: './form-login.component.html',
   styleUrl: './form-login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormLoginComponent {
   private route = inject(Router);
+  isAlert = signal<boolean>(false);
 
   form = new FormGroup({
     login: new FormControl('', {
@@ -1754,7 +2569,7 @@ export class FormLoginComponent {
       }
     }
 
-    return alert('Invalid login or password. Please check your credentials and try again.');
+    return this.isAlert.set(true);
   }
 }
 </file>
@@ -1814,6 +2629,10 @@ export class FormLoginComponent {
     >Already have an account? <a routerLink="/login" class="form-signin-link">Sign in</a></span
   >
 </section>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}
 </file>
 
 <file path="src/app/components/form-register/form-register.component.scss">
@@ -1920,86 +2739,6 @@ export class FormLoginComponent {
 }
 </file>
 
-<file path="src/app/components/form-register/form-register.component.ts">
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
-
-function equalValues(controlName1: string, controlName2: string) {
-  return (control: AbstractControl) => {
-    const password = control.get(controlName1)?.value;
-    const confirmPassword = control.get(controlName2)?.value;
-
-    if (password === confirmPassword) return null;
-
-    return { valuesNotEqual: true };
-  };
-}
-
-@Component({
-  selector: 'app-form-register',
-  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule],
-  templateUrl: './form-register.component.html',
-  styleUrl: './form-register.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class FormRegisterComponent {
-  btnText = signal<string>('Register');
-
-  form = new FormGroup({
-    login: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(4)],
-    }),
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-    }),
-
-    passwords: new FormGroup(
-      {
-        password: new FormControl('', {
-          validators: [Validators.required, Validators.minLength(6)],
-        }),
-        confirmPassword: new FormControl('', {
-          validators: [Validators.required, Validators.minLength(6)],
-        }),
-      },
-      { validators: [equalValues('password', 'confirmPassword')] },
-    ),
-
-    acceptTerms: new FormControl(false, {
-      validators: [Validators.requiredTrue],
-    }),
-  });
-
-  onSubmit() {
-    if (this.form.invalid) {
-      alert(
-        'Please check the form. Make sure all fields are filled in correctly and your passwords match.',
-      );
-      return;
-    }
-
-    if (this.form.valid) {
-      localStorage.setItem('saved-form-login', JSON.stringify(this.form.controls.login.value));
-      localStorage.setItem(
-        'saved-form-password',
-        JSON.stringify(this.form.controls.passwords.controls.password.value),
-      );
-    }
-
-    this.form.reset();
-    this.btnText.set('Registered ♡');
-  }
-}
-</file>
-
 <file path="src/app/components/header-login/header-login.component.html">
 <header class="header">
   <nav>
@@ -2047,136 +2786,14 @@ export class HeaderLoginComponent {
 }
 </file>
 
-<file path="src/app/components/header/header.component.scss">
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 30px #000;
-
-  padding: 24px 15px;
-
-  width: 100%;
-}
-
-.header-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1410px;
-  margin: 0 auto;
-}
-
-.logo-link {
-  color: #000;
-  font-family: var(--third-family);
-  font-weight: 800;
-  font-size: 32px;
-}
-
-.navigation-lists {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.navigation-link {
-  display: block;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  color: #000;
-
-  transition: 0.2s ease-in;
-}
-.navigation-link:hover {
-  color: rgba(0, 0, 0, 0.56);
-  transform: translateY(-3px);
-}
-
-.search {
-  width: 577px;
-}
-
-.search-input {
-  font-family: var(--font-family);
-  border-radius: 62px;
-  padding: 12px 16px;
-  width: 100%;
-  height: 48px;
-  background: #f0f0f0;
-}
-.search-input::placeholder {
-  font-weight: 400;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.buttons {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-</file>
-
-<file path="src/app/components/header/header.component.ts">
-import {
-  AfterViewInit,
-  Component,
-  DestroyRef,
-  ElementRef,
-  inject,
-  signal,
-  viewChild,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router';
-import { debounceTime, fromEvent, map } from 'rxjs';
-import { ProductService } from '../../service/product.service';
-import { navLink } from './nav-menu.data';
-import { INavMenu } from './nav-menu.interface';
-
-@Component({
-  selector: 'app-header',
-  imports: [RouterLink],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-})
-export class HeaderComponent implements AfterViewInit {
-  private productService = inject(ProductService);
-  private destroyRef = inject(DestroyRef);
-
-  menuItems = signal<INavMenu[]>(navLink);
-  searchInput = viewChild.required<ElementRef<HTMLInputElement>>('searchInput');
-  searchQuery = signal<string>('');
-
-  ngAfterViewInit() {
-    fromEvent(this.searchInput().nativeElement, 'input')
-      .pipe(
-        map((event) => (event.target as HTMLInputElement).value),
-        debounceTime(500),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe({
-        next: (value) => {
-          this.productService.searchQuery.set(value);
-        },
-      });
-  }
-}
-</file>
-
 <file path="src/app/components/header/nav-menu.data.ts">
 import type { INavMenu } from './nav-menu.interface';
 
 export const navLink: INavMenu[] = [
-  { name: 'Shop', link: '/shop' },
-  { name: 'On Sale', link: '/sale' },
-  { name: 'New Arrivals', link: '/arrivals' },
-  { name: 'Brands', link: '/brands' },
+  { name: 'Shop', link: '/catalog' },
+  { name: 'On Sale', link: '/home' },
+  { name: 'New Arrivals', link: '/home' },
+  { name: 'Brands', link: '/home' },
 ];
 </file>
 
@@ -2351,10 +2968,14 @@ export interface IStatItem {
       class="order-promo-input"
       placeholder="Add promo code"
     />
-    <button (click)="promoInput()" class="order-promo-btn">{{ btnText }}</button>
+    <button (click)="promoInput()" class="order-promo-btn">Apply</button>
   </div>
   <button class="order-summary-btn">Go to Checkout</button>
 </div>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}
 </file>
 
 <file path="src/app/components/order-summary/order-summary.component.scss">
@@ -2491,13 +3112,14 @@ export interface IStatItem {
 </file>
 
 <file path="src/app/components/order-summary/order-summary.component.ts">
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../service/cart.service';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-order-summary',
-  imports: [FormsModule],
+  imports: [FormsModule, AlertComponent],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -2505,20 +3127,28 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 export class OrderSummaryComponent {
   cartService = inject(CartService);
   inputValue = signal<string>('');
-  btnText = 'Apply';
+
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
 
   promoInput() {
-    if (this.inputValue().trim()) {
+    if (this.inputValue().trim() !== '') {
       this.cartService.addPromo(this.inputValue().trim());
+      if (this.cartService.promo()) {
+        this.isAlert.set(true);
+        return this.alertText.set('you applied the promo code');
+      }
     }
-    this.btnText = 'Active!!!';
+
+    this.isAlert.set(true);
+    this.alertText.set('Enter promotional code...');
   }
 }
 </file>
 
 <file path="src/app/components/product-card/product-card.component.html">
 <a [routerLink]="['/product', product().id]" class="product">
-  <img class="product-img" [src]="product().image" [alt]="product().name" />
+  <img class="product-img" [src]="product().image" (error)="updateUrl($event)" [alt]="product().name" />
   <div class="product-content">
     <span class="product-name">{{ product().name }}</span>
     <div class="product-stars">
@@ -2535,7 +3165,7 @@ export class OrderSummaryComponent {
       @if (product().originalPrice) {
         <span class="product-price">${{ product().price }}</span>
         <span class="product-price__original">{{ product().originalPrice }}</span>
-        <div class="product-price__discount">-{{ product().discount }}%</div>
+        <div class="product-price__discount">-{{ product().discount }}$</div>
       } @else {
         <span class="product-price">${{ product().price }}</span>
       }
@@ -2644,12 +3274,22 @@ export class OrderSummaryComponent {
     <ul class="product-details-gallery__thumbnails">
       @for (item of product()?.thumbnails; track $index) {
         <li>
-          <img class="product-thumbnails__img" [src]="product()?.image" [alt]="product()?.name" />
+          <img
+            class="product-thumbnails__img"
+            [src]="product()?.image"
+            (error)="updateUrl($event)"
+            [alt]="product()?.name"
+          />
         </li>
       }
     </ul>
     <div>
-      <img class="product-details-gallery__main" [src]="product()?.image" [alt]="product()?.name" />
+      <img
+        class="product-details-gallery__main"
+        [src]="product()?.image"
+        (error)="updateUrl($event)"
+        [alt]="product()?.name"
+      />
     </div>
   </div>
   <div class="product-details-info">
@@ -2719,10 +3359,14 @@ export class OrderSummaryComponent {
           <img src="/assets/svg/plus.svg" alt="plus" />
         </button>
       </div>
-      <button class="product-details-add-btn" (click)="onAddCart()">{{ textBtn }}</button>
+      <button class="product-details-add-btn" (click)="onAddCart()">Add to Cart</button>
     </div>
   </div>
 </section>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" alertText="Added" />
+}
 </file>
 
 <file path="src/app/components/product-details/product-details.component.scss">
@@ -3216,6 +3860,10 @@ export class OrderSummaryComponent {
       <button (click)="onAllReviews()" appButton>Load More Reviews</button>
     }
   </section>
+} @else {
+  <div class="review-loading">
+    <p>Review loading...</p>
+  </div>
 }
 </file>
 
@@ -3287,6 +3935,17 @@ export class OrderSummaryComponent {
   flex-wrap: wrap;
 
   gap: 20px;
+}
+
+.review-loading {
+  padding: 200px;
+  display: flex;
+  justify-content: center;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.6;
 }
 </file>
 
@@ -3571,6 +4230,7 @@ export interface IReview {
   </div>
 } @else {
   <h2 class="cart-title__Empty">Empty! Please add the item to your cart.</h2>
+  <app-alert (closed)="isAlert.set(false)" alertText="Empty! Please add the item to your cart." />
 }
 
 <app-footer />
@@ -3608,22 +4268,30 @@ export interface IReview {
 </file>
 
 <file path="src/app/pages/cart/cart.component.ts">
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { CartListComponent } from '../../components/cart-list/cart-list.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
-import { CartListComponent } from '../../components/cart-list/cart-list.component';
 import { OrderSummaryComponent } from '../../components/order-summary/order-summary.component';
 import { CartService } from '../../service/cart.service';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-cart',
-  imports: [FooterComponent, HeaderComponent, CartListComponent, OrderSummaryComponent],
+  imports: [
+    FooterComponent,
+    HeaderComponent,
+    CartListComponent,
+    OrderSummaryComponent,
+    AlertComponent,
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent {
   cartService = inject(CartService);
+  isAlert = signal<boolean>(false);
 }
 </file>
 
@@ -3793,7 +4461,16 @@ import { IProduct } from '../interfaces/product.interface';
 })
 export class CartService {
   cartProduct = signal<IProduct[]>(this.loadFromStorage());
-  promo = signal<string | null>(null);
+  readonly promoCodes = signal<string[]>([
+    'shop.co',
+    'Medok2010',
+    'WhiteMaks',
+    'Baryl348',
+    'WINTER2026',
+    'HELLO_ANGULAR',
+    'DISCOUNT50',
+  ]);
+  promo = signal<boolean | null>(null);
 
   addToCart(product: IProduct) {
     const exists = this.cartProduct().find((p) => p.id === product.id);
@@ -3834,10 +4511,10 @@ export class CartService {
 
   inputReadonly = signal<boolean>(false);
   addPromo(val: string) {
-    if (val === 'MedokTop') {
-      this.promo.set(val);
+    if (this.promoCodes().includes(val)) {
+      this.promo.set(true);
+      this.inputReadonly.set(true);
     }
-    this.inputReadonly.set(true);
   }
 
   subtotal = computed(() =>
@@ -3847,11 +4524,11 @@ export class CartService {
     this.cartProduct().reduce((acc: any, p: IProduct) => {
       const d = p.discount;
       if (!d) return 0;
-      return Math.floor(acc + p.price * p.quantity * (d / 100));
+      return Math.floor(acc + p.price * p.quantity - d / 100);
     }, 0),
   );
   deliveryFee = computed(() => {
-    if (this.promo() === 'MedokTop') return 0;
+    if (this.promo() === true) return 0;
     return Math.floor(this.subtotal() / 10);
   });
   total = computed(() => Math.floor(this.subtotal() - this.discount() + this.deliveryFee()));
@@ -3862,45 +4539,6 @@ export class CartService {
     { name: 'Delivery Fee', value: this.deliveryFee(), prefix: '$' },
     { name: 'Total', value: this.total(), prefix: '$' },
   ]);
-}
-</file>
-
-<file path="src/app/service/product.service.ts">
-import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { tap } from 'rxjs';
-import { IProduct } from '../interfaces/product.interface';
-import { IReview } from '../interfaces/review.interface';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class ProductService {
-  private http = inject(HttpClient);
-  private API = 'https://69af5399c8b37f499837e82f.mockapi.io/';
-
-  allProducts = signal<IProduct[]>([]);
-  searchQuery = signal<string>('');
-
-  filteredProducts = computed(() => {
-    const q = this.searchQuery().toLowerCase().trim();
-    const products = this.allProducts();
-
-    if (!q) return products;
-    return products.filter((p) => p.name.toLowerCase().includes(q));
-  });
-
-  getProducts() {
-    return this.http.get<IProduct[]>(`${this.API}products`).pipe(
-      tap((products) => {
-        this.allProducts.set(products);
-      }),
-    );
-  }
-
-  getReviews() {
-    return this.http.get<IReview[]>(`${this.API}reviews`);
-  }
 }
 </file>
 
@@ -4335,30 +4973,213 @@ export class App {
 }
 </file>
 
-<file path="src/app/components/header/header.component.html">
-<header class="header">
-  <div class="header-wrapper">
-    <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
-    <div class="navigation">
-      <nav>
-        <ul class="navigation-lists">
-          @for (item of menuItems(); track $index) {
-            <li>
-              <a class="navigation-link" [routerLink]="item.link">{{ item.name }}</a>
-            </li>
-          }
-        </ul>
-      </nav>
-    </div>
-    <div class="search">
-      <input class="search-input" #searchInput type="text" placeholder="Search for products..." />
-    </div>
-    <div class="buttons">
-      <button routerLink="/cart"><img src="/assets/svg/basket.svg" alt="basket" /></button>
-      <button routerLink="/login"><img src="/assets/svg/user.svg" alt="user" /></button>
-    </div>
-  </div>
-</header>
+<file path="src/app/components/form-register/form-register.component.ts">
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
+
+function equalValues(controlName1: string, controlName2: string) {
+  return (control: AbstractControl) => {
+    const password = control.get(controlName1)?.value;
+    const confirmPassword = control.get(controlName2)?.value;
+
+    if (password === confirmPassword) return null;
+
+    return { valuesNotEqual: true };
+  };
+}
+
+@Component({
+  selector: 'app-form-register',
+  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
+  templateUrl: './form-register.component.html',
+  styleUrl: './form-register.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FormRegisterComponent {
+  btnText = signal<string>('Register');
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
+
+  form = new FormGroup({
+    login: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(4)],
+    }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+    }),
+
+    passwords: new FormGroup(
+      {
+        password: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(6)],
+        }),
+        confirmPassword: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(6)],
+        }),
+      },
+      { validators: [equalValues('password', 'confirmPassword')] },
+    ),
+
+    acceptTerms: new FormControl(false, {
+      validators: [Validators.requiredTrue],
+    }),
+  });
+
+  onSubmit() {
+    if (this.form.invalid) {
+      this.alertText.set(
+        'Please check the form. Make sure all fields are filled in correctly and your passwords match.',
+      );
+      this.isAlert.set(true);
+
+      return;
+    }
+
+    if (this.form.valid) {
+      localStorage.setItem('saved-form-login', JSON.stringify(this.form.controls.login.value));
+      localStorage.setItem(
+        'saved-form-password',
+        JSON.stringify(this.form.controls.passwords.controls.password.value),
+      );
+    }
+
+    this.form.reset();
+    this.btnText.set('Registered ♡');
+    this.alertText.set('Registered ♡');
+    this.isAlert.set(true);
+  }
+}
+</file>
+
+<file path="src/app/components/header/header.component.scss">
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px #000;
+
+  padding: 15px 15px;
+
+  width: 100%;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1410px;
+  margin: 0 auto;
+}
+
+.logo-link {
+  color: #000;
+  font-family: var(--third-family);
+  font-weight: 800;
+  font-size: 32px;
+}
+
+.navigation-lists {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navigation-link {
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+
+  transition: 0.2s ease-in;
+}
+.navigation-link:hover {
+  color: rgba(0, 0, 0, 0.56);
+  transform: translateY(-3px);
+}
+
+.search {
+  width: 577px;
+}
+
+.search-input {
+  font-family: var(--font-family);
+  border-radius: 62px;
+  padding: 12px 16px;
+  width: 100%;
+  height: 48px;
+  background: #f0f0f0;
+}
+.search-input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+</file>
+
+<file path="src/app/components/header/header.component.ts">
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
+import { debounceTime, fromEvent, map } from 'rxjs';
+import { ProductService } from '../../service/product.service';
+import { navLink } from './nav-menu.data';
+import { INavMenu } from './nav-menu.interface';
+
+@Component({
+  selector: 'app-header',
+  imports: [RouterLink],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+})
+export class HeaderComponent implements AfterViewInit {
+  private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
+
+  menuItems = signal<INavMenu[]>(navLink);
+  searchInput = viewChild.required<ElementRef<HTMLInputElement>>('searchInput');
+  searchQuery = signal<string>('');
+
+  ngAfterViewInit() {
+    fromEvent(this.searchInput().nativeElement, 'input')
+      .pipe(
+        map((event) => (event.target as HTMLInputElement).value),
+        debounceTime(500),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe({
+        next: (value) => {
+          this.productService.searchQuery.set(value);
+        },
+      });
+  }
+}
 </file>
 
 <file path="src/app/components/product-card/product-card.component.ts">
@@ -4374,203 +5195,11 @@ import { IProduct } from '../../interfaces/product.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-  // product = signal<IProduct[]>(products);
   product = input.required<IProduct>();
-}
-</file>
 
-<file path="src/app/components/product-details/product-details.component.ts">
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  DestroyRef,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../service/cart.service';
-import { ProductService } from '../../service/product.service';
-
-@Component({
-  selector: 'app-product-details',
-  imports: [],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ProductDetailsComponent implements OnInit {
-  private productService = inject(ProductService);
-  private destroyRef = inject(DestroyRef);
-
-  products = this.productService.allProducts;
-  cartService = inject(CartService);
-  textBtn = 'Add to Cart';
-  // Получаем доступ к параметрам маршрута
-  route = inject(ActivatedRoute);
-  // Берём id из URL
-  id = signal(Number(this.route.snapshot.paramMap.get('id')));
-  // Находим продукт по id
-  product = computed(() => this.products().find((p) => p.id === this.id()));
-  ngOnInit(): void {
-    // Подписываемся на изменения параметров URL, чтобы обновлять id при навигации
-    this.route.params.subscribe((params) => {
-      this.id.set(+params['id']);
-    });
-
-    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
-  }
-
-  onColorSelect(color: string) {
-    this.product()!.selectedColor = color;
-  }
-
-  onSizeSelect(size: string) {
-    this.product()!.selectedSize = size;
-  }
-
-  onQuantityMinus() {
-    if (this.product()!.quantity > 1) {
-      this.product()!.quantity -= 1;
-    }
-  }
-
-  onQuantityPlus() {
-    this.product()!.quantity += 1;
-  }
-
-  onAddCart() {
-    this.cartService.addToCart(this.product()!);
-    this.textBtn = 'Added!';
-  }
-}
-</file>
-
-<file path="src/app/components/product-section/product-section.component.ts">
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  DestroyRef,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ProductService } from '../../service/product.service';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { ProductCardComponent } from '../product-card/product-card.component';
-
-@Component({
-  selector: 'app-product-section',
-  imports: [ProductCardComponent, ButtonComponent],
-  templateUrl: './product-section.component.html',
-  styleUrl: './product-section.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ProductSectionComponent implements OnInit {
-  private productService = inject(ProductService);
-  private readonly STEP = 4;
-  private allProducts = this.productService.allProducts;
-  private destroyRef = inject(DestroyRef);
-
-  private visibleCount = signal<number>(this.STEP);
-
-  private newArrivals = computed(() =>
-    this.productService.filteredProducts().filter((p) => p.isNew),
-  );
-
-  productsItem = computed(() => this.newArrivals().slice(0, this.visibleCount()));
-  isButtonVisible = computed(() => this.visibleCount() < this.newArrivals().length);
-
-  ngOnInit() {
-    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
-  }
-
-  onAllProducts() {
-    this.visibleCount.update((count) => count + this.STEP);
-  }
-}
-</file>
-
-<file path="src/app/components/product-top-selling/product-top-selling.component.ts">
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  DestroyRef,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ProductService } from '../../service/product.service';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { ProductCardComponent } from '../product-card/product-card.component';
-
-@Component({
-  selector: 'app-product-top-selling',
-  imports: [ProductCardComponent, ButtonComponent],
-  templateUrl: './product-top-selling.component.html',
-  styleUrl: './product-top-selling.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ProductTopSellingComponent implements OnInit {
-  private productService = inject(ProductService);
-  private allProducts = this.productService.allProducts;
-  private destroyRef = inject(DestroyRef);
-
-  private readonly STEP = 4;
-
-  private visibleCount = signal<number>(this.STEP);
-
-  private allTopSelling = computed(() =>
-    this.productService.filteredProducts().filter((p) => p.isNew),
-  );
-
-  productsItem = computed(() => this.allTopSelling().slice(0, this.visibleCount()));
-  isButtonVisible = computed(() => this.visibleCount() < this.allTopSelling().length);
-
-  onAllProducts() {
-    this.visibleCount.update((count) => count + this.STEP);
-  }
-
-  ngOnInit() {
-    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
-  }
-}
-</file>
-
-<file path="src/app/components/recommendations/recommendations.component.ts">
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { IProduct } from '../../interfaces/product.interface';
-import { ProductService } from '../../service/product.service';
-import { ProductCardComponent } from '../product-card/product-card.component';
-
-@Component({
-  selector: 'app-recommendations',
-  imports: [ProductCardComponent],
-  templateUrl: './recommendations.component.html',
-  styleUrl: './recommendations.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class RecommendationsComponent implements OnInit {
-  private productService = inject(ProductService);
-  private allRecommendedProducts = signal<IProduct[]>([]);
-
-  recommendedProducts = computed(() =>
-    this.allRecommendedProducts().filter((t) => t.isTopSelling === true),
-  );
-  recommendedProductsItem = computed(() => this.recommendedProducts().slice(0, 4));
-
-  ngOnInit() {
-    this.productService.getProducts().subscribe({
-      next: (products) => {
-        this.allRecommendedProducts.set(products);
-      },
-    });
+  updateUrl(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.src = '/assets/images/products/fallback.svg';
   }
 }
 </file>
@@ -4600,16 +5229,378 @@ export class ReviewCardComponent {
 }
 </file>
 
+<file path="src/app/components/testimonials/testimonials.component.ts">
+import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
+import { reviews } from './review-card.data';
+import { IReview } from './review-card.interface';
+import { ReviewCardComponent } from './review-card/review-card.component';
+
+@Component({
+  selector: 'app-testimonials',
+  imports: [ReviewCardComponent],
+  templateUrl: './testimonials.component.html',
+  styleUrl: './testimonials.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TestimonialsComponent {
+  reviews = signal<IReview[]>(reviews);
+  slider = viewChild.required<ElementRef>('slider');
+
+  onScrollLeft() {
+    this.slider().nativeElement.scrollBy({ left: -400, behavior: 'smooth' });
+  }
+  onScrollRight() {
+    this.slider().nativeElement.scrollBy({ left: 400, behavior: 'smooth' });
+  }
+}
+</file>
+
+<file path="src/app/data/cart-product.data.ts">
+import { IProduct } from '../interfaces/product.interface';
+export const cartProduct: IProduct[] = [];
+</file>
+
+<file path="src/app/service/product.service.ts">
+import { HttpClient } from '@angular/common/http';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { tap } from 'rxjs';
+import { IProduct } from '../interfaces/product.interface';
+import { IReview } from '../interfaces/review.interface';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductService {
+  private http = inject(HttpClient);
+  private API = 'https://69af5399c8b37f499837e82f.mockapi.io/';
+
+  allProducts = signal<IProduct[]>([]);
+  searchQuery = signal<string>('');
+
+  filteredProducts = computed(() => {
+    const q = this.searchQuery().toLowerCase().trim();
+    const products = this.allProducts();
+
+    if (!q) return products;
+    return products.filter((p) => p.name.toLowerCase().includes(q));
+  });
+
+  getProducts() {
+    return this.http.get<IProduct[]>(`${this.API}products`).pipe(
+      tap((products) => {
+        this.allProducts.set(products);
+      }),
+    );
+  }
+
+  getReviews() {
+    return this.http.get<IReview[]>(`${this.API}reviews`);
+  }
+}
+</file>
+
+<file path="src/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SHOP.CO</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
+</file>
+
+<file path="tsconfig.app.json">
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts"]
+}
+</file>
+
+<file path="src/app/app.routes.ts">
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./pages/register/register.component').then((m) => m.RegisterComponent),
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+    // canActivate: [loginGuard],
+  },
+  {
+    path: 'product/:id',
+    loadComponent: () =>
+      import('./pages/product-detail/product-detail.component').then(
+        (m) => m.ProductDetailComponent,
+      ),
+    // canActivate: [loginGuard],
+  },
+  {
+    path: 'catalog',
+    loadComponent: () =>
+      import('./pages/catalog/catalog.component').then((m) => m.CatalogComponent),
+    // canActivate: [loginGuard],
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
+    // canActivate: [loginGuard],
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
+    // canActivate: [loginGuard],
+  },
+];
+</file>
+
+<file path="src/app/components/header/header.component.html">
+<header class="header">
+  <div class="header-wrapper">
+    <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
+    <div class="navigation">
+      <nav>
+        <ul class="navigation-lists">
+          @for (item of menuItems(); track $index) {
+            <li>
+              <a class="navigation-link" [routerLink]="item.link">{{ item.name }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+    <div class="search">
+      <input class="search-input" #searchInput type="text" placeholder="Search for products..." />
+    </div>
+    <div class="buttons">
+      <button routerLink="/cart"><img src="/assets/svg/basket.svg" alt="basket" /></button>
+      <button routerLink="/login"><img src="/assets/svg/user.svg" alt="user" /></button>
+    </div>
+  </div>
+</header>
+</file>
+
+<file path="src/app/components/product-details/product-details.component.ts">
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from '../../interfaces/product.interface';
+import { CartService } from '../../service/cart.service';
+import { ProductService } from '../../service/product.service';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
+
+@Component({
+  selector: 'app-product-details',
+  imports: [AlertComponent],
+  templateUrl: './product-details.component.html',
+  styleUrl: './product-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProductDetailsComponent implements OnInit {
+  private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
+  private route = inject(Router);
+  private cartService = inject(CartService);
+
+  isAlert = signal<boolean>(false);
+
+  products = signal<IProduct[]>([]);
+  // Получаем доступ к параметрам маршрута
+  activatedRoute = inject(ActivatedRoute);
+  // Берём id из URL
+  id = signal(Number(this.activatedRoute.snapshot.paramMap.get('id')));
+  // Находим продукт по id
+  product = computed(() => this.products().find((p) => p.id === this.id()));
+  ngOnInit(): void {
+    // Подписываемся на изменения параметров URL, чтобы обновлять id при навигации
+    this.activatedRoute.params.subscribe((params) => {
+      this.id.set(+params['id']);
+    });
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+
+    this.products.set(this.productService.allProducts());
+  }
+
+  updateUrl(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.src = '/assets/images/products/fallback.svg';
+  }
+
+  onColorSelect(color: string) {
+    const currentId = this.id();
+
+    this.products.update((allProducts) =>
+      allProducts.map((p) => (p.id === currentId ? { ...p, selectedColor: color } : p)),
+    );
+  }
+
+  onSizeSelect(size: string) {
+    const currentId = this.id();
+
+    this.products.update((allProducts) =>
+      allProducts.map((p) => (p.id === currentId ? { ...p, selectedSize: size } : p)),
+    );
+  }
+
+  onQuantityMinus() {
+    const currentId = this.id();
+
+    if (this.product()!.quantity > 1) {
+      this.products.update((allProducts) =>
+        allProducts.map((p) =>
+          p.id === currentId ? { ...p, quantity: Math.max(1, p.quantity - 1) } : p,
+        ),
+      );
+    }
+  }
+
+  onQuantityPlus() {
+    const currentId = this.id();
+
+    this.products.update((allProducts) =>
+      allProducts.map((p) => (p.id === currentId ? { ...p, quantity: (p.quantity || 0) + 1 } : p)),
+    );
+  }
+
+  onAddCart() {
+    this.cartService.addToCart(this.product()!);
+    this.isAlert.set(true);
+
+    this.route.navigate(['/cart']);
+  }
+}
+</file>
+
+<file path="src/app/components/product-section/product-section.component.ts">
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductService } from '../../service/product.service';
+import { ButtonComponent } from '../../shared/button/button.component';
+import { ProductCardComponent } from '../product-card/product-card.component';
+
+@Component({
+  selector: 'app-product-section',
+  imports: [ProductCardComponent, ButtonComponent],
+  templateUrl: './product-section.component.html',
+  styleUrl: './product-section.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProductSectionComponent implements OnInit {
+  private productService = inject(ProductService);
+  private readonly STEP = 4;
+  private destroyRef = inject(DestroyRef);
+
+  private visibleCount = signal<number>(this.STEP);
+
+  private newArrivals = computed(() =>
+    this.productService.filteredProducts().filter((p) => p.isNew),
+  );
+
+  productsItem = computed(() => this.newArrivals().slice(0, this.visibleCount()));
+  isButtonVisible = computed(() => this.visibleCount() < this.newArrivals().length);
+
+  ngOnInit() {
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+  }
+
+  onAllProducts() {
+    this.visibleCount.update((count) => count + this.STEP);
+  }
+}
+</file>
+
+<file path="src/app/components/recommendations/recommendations.component.ts">
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductService } from '../../service/product.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
+
+@Component({
+  selector: 'app-recommendations',
+  imports: [ProductCardComponent],
+  templateUrl: './recommendations.component.html',
+  styleUrl: './recommendations.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RecommendationsComponent implements OnInit {
+  private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
+
+  private allRecommendedProducts = computed(() =>
+    this.productService.filteredProducts().filter((p) => p.isNew),
+  );
+
+  recommendedProducts = computed(() =>
+    this.allRecommendedProducts().filter((t) => t.isTopSelling === true),
+  );
+  recommendedProductsItem = computed(() => this.recommendedProducts().slice(0, 4));
+
+  ngOnInit() {
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+  }
+}
+</file>
+
 <file path="src/app/components/review-list/review-list.component.ts">
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   effect,
   inject,
   OnInit,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { IReview } from '../../interfaces/review.interface';
 import { ProductService } from '../../service/product.service';
@@ -4627,10 +5618,10 @@ import { IFilterOption } from './review-option.interface';
 })
 export class ReviewListComponent implements OnInit {
   private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
 
   private readonly STEP = 6;
   private readonly visibleCount = signal<number>(this.STEP);
-
   allReviews = signal<IReview[]>([]);
   reviewsItem = computed(() => this.allReviews().slice(0, this.visibleCount()));
   isButtonVisible = computed(() => this.visibleCount() < this.allReviews().length);
@@ -4669,118 +5660,16 @@ export class ReviewListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getReviews().subscribe({
-      next: (r) => {
-        this.allReviews.set(r);
-      },
-    });
+    this.productService
+      .getReviews()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (r) => {
+          this.allReviews.set(r);
+        },
+      });
   }
 }
-</file>
-
-<file path="src/app/components/testimonials/testimonials.component.ts">
-import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
-import { reviews } from './review-card.data';
-import { IReview } from './review-card.interface';
-import { ReviewCardComponent } from './review-card/review-card.component';
-
-@Component({
-  selector: 'app-testimonials',
-  imports: [ReviewCardComponent],
-  templateUrl: './testimonials.component.html',
-  styleUrl: './testimonials.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class TestimonialsComponent {
-  reviews = signal<IReview[]>(reviews);
-  slider = viewChild.required<ElementRef>('slider');
-
-  onScrollLeft() {
-    this.slider().nativeElement.scrollBy({ left: -400, behavior: 'smooth' });
-  }
-  onScrollRight() {
-    this.slider().nativeElement.scrollBy({ left: 400, behavior: 'smooth' });
-  }
-}
-</file>
-
-<file path="src/app/data/cart-product.data.ts">
-import { IProduct } from '../interfaces/product.interface';
-export const cartProduct: IProduct[] = [];
-</file>
-
-<file path="src/index.html">
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>SHOP.CO</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
-    <app-root></app-root>
-  </body>
-</html>
-</file>
-
-<file path="tsconfig.app.json">
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": ["node"]
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts"]
-}
-</file>
-
-<file path="src/app/app.routes.ts">
-import { Routes } from '@angular/router';
-import { loginGuard } from './guards/login-guard';
-
-export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./pages/register/register.component').then((m) => m.RegisterComponent),
-  },
-  {
-    path: 'home',
-    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
-    canActivate: [loginGuard],
-  },
-  {
-    path: 'product/:id',
-    loadComponent: () =>
-      import('./pages/product-detail/product-detail.component').then(
-        (m) => m.ProductDetailComponent,
-      ),
-    canActivate: [loginGuard],
-  },
-  {
-    path: 'cart',
-    loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
-    canActivate: [loginGuard],
-  },
-  {
-    path: '**',
-    redirectTo: '/home',
-  },
-];
 </file>
 
 <file path="src/styles.scss">
@@ -4814,6 +5703,53 @@ body {
   padding: 40px 36px;
   width: 420px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+</file>
+
+<file path="src/app/components/product-top-selling/product-top-selling.component.ts">
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ProductService } from '../../service/product.service';
+import { ButtonComponent } from '../../shared/button/button.component';
+import { ProductCardComponent } from '../product-card/product-card.component';
+
+@Component({
+  selector: 'app-product-top-selling',
+  imports: [ProductCardComponent, ButtonComponent],
+  templateUrl: './product-top-selling.component.html',
+  styleUrl: './product-top-selling.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProductTopSellingComponent implements OnInit {
+  private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
+
+  private readonly STEP = 4;
+
+  private visibleCount = signal<number>(this.STEP);
+
+  private allTopSelling = computed(() =>
+    this.productService.filteredProducts().filter((p) => p.isTopSelling),
+  );
+
+  productsItem = computed(() => this.allTopSelling().slice(0, this.visibleCount()));
+  isButtonVisible = computed(() => this.visibleCount() < this.allTopSelling().length);
+
+  onAllProducts() {
+    this.visibleCount.update((count) => count + this.STEP);
+  }
+
+  ngOnInit() {
+    this.productService.getProducts().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+  }
 }
 </file>
 
@@ -4999,7 +5935,7 @@ Reviews include **21 entries** with names, star ratings, verified badge status, 
 > This is an early demo. A lot is still planned:
 
 - [ ] **Product Catalog page** — full browsable catalog with filters by category, price, size, and color
-- [ ] **Working search** — header search bar is UI-only right now
+- [X] **Working search** — header search bar is UI-only right now
 - [X] **User auth page** — login/register UI
 - [ ] **Full responsive layout** — mobile & tablet support
 - [X] **API integration** — replace all mock data with real backend calls

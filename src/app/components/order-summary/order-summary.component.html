@@ -16,7 +16,11 @@
       class="order-promo-input"
       placeholder="Add promo code"
     />
-    <button (click)="promoInput()" class="order-promo-btn">{{ btnText }}</button>
+    <button (click)="promoInput()" class="order-promo-btn">Apply</button>
   </div>
   <button class="order-summary-btn">Go to Checkout</button>
 </div>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}

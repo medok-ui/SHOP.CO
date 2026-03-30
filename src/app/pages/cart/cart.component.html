@@ -8,6 +8,7 @@
   </div>
 } @else {
   <h2 class="cart-title__Empty">Empty! Please add the item to your cart.</h2>
+  <app-alert (closed)="isAlert.set(false)" alertText="Empty! Please add the item to your cart." />
 }
 
 <app-footer />

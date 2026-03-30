@@ -1,10 +1,11 @@
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../service/cart.service';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-order-summary',
-  imports: [FormsModule],
+  imports: [FormsModule, AlertComponent],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,12 +13,20 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 export class OrderSummaryComponent {
   cartService = inject(CartService);
   inputValue = signal<string>('');
-  btnText = 'Apply';
+
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
 
   promoInput() {
-    if (this.inputValue().trim()) {
+    if (this.inputValue().trim() !== '') {
       this.cartService.addPromo(this.inputValue().trim());
+      if (this.cartService.promo()) {
+        this.isAlert.set(true);
+        return this.alertText.set('you applied the promo code');
+      }
     }
-    this.btnText = 'Active!!!';
+
+    this.isAlert.set(true);
+    this.alertText.set('Enter promotional code...');
   }
 }

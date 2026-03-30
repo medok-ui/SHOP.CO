@@ -10,6 +10,10 @@ import { IProduct } from '../../interfaces/product.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-  // product = signal<IProduct[]>(products);
   product = input.required<IProduct>();
+
+  updateUrl(event: Event) {
+    const target = event.target as HTMLImageElement;
+    target.src = '/assets/images/products/fallback.svg';
+  }
 }

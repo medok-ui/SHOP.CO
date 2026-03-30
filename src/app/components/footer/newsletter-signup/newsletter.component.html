@@ -1,13 +1,17 @@
 <div class="newsletter">
   <h2 class="newsletter-title">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
-  <form (ngSubmit)="onSubmit()" class="newsletter-form">
+  <form  [formGroup]="from" (ngSubmit)="onSubmit()" class="newsletter-form">
     <input
-      [(ngModel)]="emailInput"
+      formControlName="email"
       name="email"
       class="newsletter-input"
       type="email"
       placeholder="Enter your email address"
     />
-    <button class="newsletter-btn">{{ buttonText }}</button>
+    <button class="newsletter-btn">Subscribe to Newsletter</button>
   </form>
 </div>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}

@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ButtonLoginComponent } from '../../shared/button-login/button-login.component';
+import { AlertComponent } from '../../shared/components/alert/alert.component';
 
 function equalValues(controlName1: string, controlName2: string) {
   return (control: AbstractControl) => {
@@ -22,13 +23,15 @@ function equalValues(controlName1: string, controlName2: string) {
 
 @Component({
   selector: 'app-form-register',
-  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule],
+  imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
   templateUrl: './form-register.component.html',
   styleUrl: './form-register.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormRegisterComponent {
   btnText = signal<string>('Register');
+  isAlert = signal<boolean>(false);
+  alertText = signal<string>('');
 
   form = new FormGroup({
     login: new FormControl('', {
@@ -57,9 +60,11 @@ export class FormRegisterComponent {
 
   onSubmit() {
     if (this.form.invalid) {
-      alert(
+      this.alertText.set(
         'Please check the form. Make sure all fields are filled in correctly and your passwords match.',
       );
+      this.isAlert.set(true);
+
       return;
     }
 
@@ -73,5 +78,7 @@ export class FormRegisterComponent {
 
     this.form.reset();
     this.btnText.set('Registered ♡');
+    this.alertText.set('Registered ♡');
+    this.isAlert.set(true);
   }
 }

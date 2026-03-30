@@ -52,3 +52,7 @@
     >Already have an account? <a routerLink="/login" class="form-signin-link">Sign in</a></span
   >
 </section>
+
+@if (isAlert()) {
+  <app-alert (closed)="isAlert.set(false)" [alertText]="alertText()" />
+}

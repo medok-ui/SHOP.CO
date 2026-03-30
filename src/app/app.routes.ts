@@ -30,6 +30,12 @@ export const routes: Routes = [
     canActivate: [loginGuard],
   },
   {
+    path: 'catalog',
+    loadComponent: () =>
+      import('./pages/catalog/catalog.component').then((m) => m.CatalogComponent),
+    canActivate: [loginGuard],
+  },
+  {
     path: 'cart',
     loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
     canActivate: [loginGuard],
@@ -37,5 +43,6 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: '/home',
+    canActivate: [loginGuard],
   },
 ];

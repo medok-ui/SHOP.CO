@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   effect,
   inject,
   OnInit,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { IReview } from '../../interfaces/review.interface';
 import { ProductService } from '../../service/product.service';
@@ -24,10 +26,10 @@ import { IFilterOption } from './review-option.interface';
 })
 export class ReviewListComponent implements OnInit {
   private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef);
 
   private readonly STEP = 6;
   private readonly visibleCount = signal<number>(this.STEP);
-
   allReviews = signal<IReview[]>([]);
   reviewsItem = computed(() => this.allReviews().slice(0, this.visibleCount()));
   isButtonVisible = computed(() => this.visibleCount() < this.allReviews().length);
@@ -66,10 +68,13 @@ export class ReviewListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getReviews().subscribe({
-      next: (r) => {
-        this.allReviews.set(r);
-      },
-    });
+    this.productService
+      .getReviews()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (r) => {
+          this.allReviews.set(r);
+        },
+      });
   }
 }

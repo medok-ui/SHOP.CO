@@ -1,5 +1,5 @@
 <a [routerLink]="['/product', product().id]" class="product">
-  <img class="product-img" [src]="product().image" [alt]="product().name" />
+  <img class="product-img" [src]="product().image" (error)="updateUrl($event)" [alt]="product().name" />
   <div class="product-content">
     <span class="product-name">{{ product().name }}</span>
     <div class="product-stars">
@@ -16,7 +16,7 @@
       @if (product().originalPrice) {
         <span class="product-price">${{ product().price }}</span>
         <span class="product-price__original">{{ product().originalPrice }}</span>
-        <div class="product-price__discount">-{{ product().discount }}%</div>
+        <div class="product-price__discount">-{{ product().discount }}$</div>
       } @else {
         <span class="product-price">${{ product().price }}</span>
       }

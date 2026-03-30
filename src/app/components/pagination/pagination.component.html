@@ -1,0 +1,27 @@
+<div class="pagination">
+  <button
+    class="pagination-btn"
+    (click)="setPage(state.currentPage() - 1)"
+    [disabled]="state.currentPage() === 1"
+  >
+    <img src="/assets/svg/arrow-left.svg" alt="arrow left" />Previous
+  </button>
+  <div class="pagination-pages">
+    @for (page of pages(); track page) {
+      <button
+        class="pagination-page-btn"
+        [class.active]="page === state.currentPage()"
+        (click)="setPage(page)"
+      >
+        {{ page }}
+      </button>
+    }
+  </div>
+  <button
+    class="pagination-btn"
+    (click)="setPage(state.currentPage() + 1)"
+    [disabled]="state.currentPage() === totalPages()"
+  >
+    Next <img src="/assets/svg/arrow-right.svg" alt="arrow right" />
+  </button>
+</div>

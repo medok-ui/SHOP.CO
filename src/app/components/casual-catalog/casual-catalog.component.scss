@@ -1,0 +1,19 @@
+.casual-title {
+  text-align: end;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.casual-catalog {
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  margin-bottom: 20px;
+}

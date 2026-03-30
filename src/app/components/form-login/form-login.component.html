@@ -34,3 +34,10 @@
     >Don't have an account? <a routerLink="/register" class="form-signin-link">Register</a></span
   >
 </section>
+
+@if (isAlert()) {
+  <app-alert
+    (closed)="isAlert.set(false)"
+    alertText="Invalid login or password. Please check your credentials and try again."
+  />
+}

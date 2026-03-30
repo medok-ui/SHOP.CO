@@ -6,7 +6,16 @@ import { IProduct } from '../interfaces/product.interface';
 })
 export class CartService {
   cartProduct = signal<IProduct[]>(this.loadFromStorage());
-  promo = signal<string | null>(null);
+  readonly promoCodes = signal<string[]>([
+    'shop.co',
+    'Medok2010',
+    'WhiteMaks',
+    'Baryl348',
+    'WINTER2026',
+    'HELLO_ANGULAR',
+    'DISCOUNT50',
+  ]);
+  promo = signal<boolean | null>(null);
 
   addToCart(product: IProduct) {
     const exists = this.cartProduct().find((p) => p.id === product.id);
@@ -47,10 +56,10 @@ export class CartService {
 
   inputReadonly = signal<boolean>(false);
   addPromo(val: string) {
-    if (val === 'MedokTop') {
-      this.promo.set(val);
+    if (this.promoCodes().includes(val)) {
+      this.promo.set(true);
+      this.inputReadonly.set(true);
     }
-    this.inputReadonly.set(true);
   }
 
   subtotal = computed(() =>
@@ -60,11 +69,11 @@ export class CartService {
     this.cartProduct().reduce((acc: any, p: IProduct) => {
       const d = p.discount;
       if (!d) return 0;
-      return Math.floor(acc + p.price * p.quantity * (d / 100));
+      return Math.floor(acc + p.price * p.quantity - d / 100);
     }, 0),
   );
   deliveryFee = computed(() => {
-    if (this.promo() === 'MedokTop') return 0;
+    if (this.promo() === true) return 0;
     return Math.floor(this.subtotal() / 10);
   });
   total = computed(() => Math.floor(this.subtotal() - this.discount() + this.deliveryFee()));

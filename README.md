@@ -59,18 +59,18 @@ Pixel-perfect implementation of:
 ## 📸 Pages Overview
 
 ```
-🏠  /home          — Hero · Brands · New Arrivals · Top Selling
+ /home          — Hero · Brands · New Arrivals · Top Selling
                      Browse by Style · Testimonials · Newsletter
 
-📦  /catalog       — Filters sidebar · Products grid · Pagination
+ /catalog       — Filters sidebar · Products grid · Pagination
 
-🧾  /product/:id   — Gallery · Colors · Sizes · Qty · Cart · Reviews
+ /product/:id   — Gallery · Colors · Sizes · Qty · Cart · Reviews
 
-🛒  /cart          — Items · Summary · Promo code · Total
+ /cart          — Items · Summary · Promo code · Total
 
-🔐  /login         — Sign in with validation & error feedback
+ /login         — Sign in with validation & error feedback
 
-📝  /register      — Full registration with password match validator
+  /register      — Full registration with password match validator
 ```
 
 ---

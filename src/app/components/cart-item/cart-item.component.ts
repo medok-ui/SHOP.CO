@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
-import { IProduct } from '../../interfaces/product.interface';
 import { RouterLink } from '@angular/router';
+import { IProduct } from '../../interfaces/product.interface';
 import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'app-cart-item',
   imports: [RouterLink],
   templateUrl: './cart-item.component.html',
-  styleUrl: './cart-item.component.scss',
+  styleUrls: ['./cart-item.component.scss', './cart-item.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent {
@@ -26,6 +26,6 @@ export class CartItemComponent {
   }
 
   onRemoveCart(id: number) {
-    this.cartService.removeCart(id)
+    this.cartService.removeCart(id);
   }
 }

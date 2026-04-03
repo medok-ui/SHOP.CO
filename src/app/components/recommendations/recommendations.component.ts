@@ -14,7 +14,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   selector: 'app-recommendations',
   imports: [ProductCardComponent],
   templateUrl: './recommendations.component.html',
-  styleUrl: './recommendations.component.scss',
+  styleUrls: ['./recommendations.component.scss', './recommendations.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecommendationsComponent implements OnInit {

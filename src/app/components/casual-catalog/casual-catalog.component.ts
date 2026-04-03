@@ -9,7 +9,7 @@ import { CatalogStateService } from './../../service/catalog-state.service';
   selector: 'app-casual-catalog',
   imports: [ProductCardComponent, PaginationComponent],
   templateUrl: './casual-catalog.component.html',
-  styleUrl: './casual-catalog.component.scss',
+  styleUrls: ['./casual-catalog.component.scss', './casual-catalog.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CasualCatalogComponent implements OnInit {

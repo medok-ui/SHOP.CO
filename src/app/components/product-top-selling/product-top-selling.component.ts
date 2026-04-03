@@ -16,7 +16,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   selector: 'app-product-top-selling',
   imports: [ProductCardComponent, ButtonComponent],
   templateUrl: './product-top-selling.component.html',
-  styleUrl: './product-top-selling.component.scss',
+  styleUrls: ['./product-top-selling.component.scss', './product-top.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductTopSellingComponent implements OnInit {

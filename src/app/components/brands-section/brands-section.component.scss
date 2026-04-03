@@ -7,7 +7,7 @@
 .brands-container {
   max-width: 1410px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 0 15px;
 }
 
 .brands-lists {
@@ -17,6 +17,11 @@
   animation: scroll-left 20s linear infinite;
 }
 
+.brand-img {
+  width: 156px;
+  height: 33px;
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(-50%);
@@ -24,4 +29,10 @@
   100% {
     transform: translateX(50%);
   }
+}
+
+// for adaptive
+
+.brands-lists--row-2 {
+  display: none !important;
 }

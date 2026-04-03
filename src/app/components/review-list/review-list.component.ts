@@ -3,7 +3,6 @@ import {
   Component,
   computed,
   DestroyRef,
-  effect,
   inject,
   OnInit,
   signal,
@@ -21,7 +20,7 @@ import { IFilterOption } from './review-option.interface';
   selector: 'app-review-list',
   imports: [ReviewCardComponent, ButtonComponent, FormsModule],
   templateUrl: './review-list.component.html',
-  styleUrl: './review-list.component.scss',
+  styleUrls: ['./review-list.component.scss', './review-list.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewListComponent implements OnInit {
@@ -51,13 +50,13 @@ export class ReviewListComponent implements OnInit {
     }
   });
 
-  constructor() {
-    effect(() => {
-      this.selectedFilterValue();
-      this.filteredReviews();
-      this.allReviews();
-    });
-  }
+  // constructor() {
+  //   effect(() => {
+  //     this.selectedFilterValue();
+  //     this.filteredReviews();
+  //     this.allReviews();
+  //   });
+  // }
 
   onAllReviews() {
     this.visibleCount.update((count) => count + this.STEP);

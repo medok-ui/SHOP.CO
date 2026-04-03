@@ -12,7 +12,7 @@ import { AlertComponent } from '../../../shared/components/alert/alert.component
   selector: 'app-newsletter',
   imports: [FormsModule, AlertComponent, ReactiveFormsModule],
   templateUrl: './newsletter.component.html',
-  styleUrl: './newsletter.component.scss',
+  styleUrls: ['./newsletter.component.scss', './newsletter.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsletterSignupComponent {

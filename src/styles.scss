@@ -14,12 +14,9 @@ body {
 }
 
 .line {
-  margin: 0 auto auto auto;
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
   max-width: 1410px;
-  padding: 0 15px;
-  height: 0px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .form-login {
@@ -28,4 +25,13 @@ body {
   padding: 40px 36px;
   width: 420px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 480px) {
+  .form-login {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 16px;
+    width: 320px;
+  }
 }

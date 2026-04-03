@@ -6,7 +6,7 @@ import { IProduct } from '../../interfaces/product.interface';
   selector: 'app-product-card',
   imports: [RouterLink],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.scss',
+  styleUrls: ['./product-card.component.scss', './product-card.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {

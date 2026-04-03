@@ -70,3 +70,15 @@
   gap: 14px;
   align-items: center;
 }
+
+//for adaptive
+
+.adaptive-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.burger-nav {
+  display: none;
+}

@@ -11,7 +11,7 @@
 .hero-container {
   max-width: 1410px;
   margin: 0 auto;
-  padding: 15px;
+  padding: 0 15px;
 
   display: flex;
   justify-content: space-between;
@@ -82,4 +82,10 @@
   font-size: 16px;
   line-height: 138%;
   color: rgba(0, 0, 0, 0.6);
+}
+
+// for adaptive
+
+.hero-mobile-img {
+  display: none !important;
 }

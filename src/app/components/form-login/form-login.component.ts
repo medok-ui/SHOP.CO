@@ -8,7 +8,7 @@ import { AlertComponent } from '../../shared/components/alert/alert.component';
   selector: 'app-form-login',
   imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
   templateUrl: './form-login.component.html',
-  styleUrl: './form-login.component.scss',
+  styleUrls: ['./form-login.component.scss', './form-login.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormLoginComponent {

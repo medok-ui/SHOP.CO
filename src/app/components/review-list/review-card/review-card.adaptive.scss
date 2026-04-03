@@ -1,0 +1,42 @@
+@media (max-width: 768px) {
+  .review-card {
+    padding: 20px 24px;
+    max-width: 100%;
+  }
+
+  .review-name-user {
+    font-size: 16px;
+  }
+
+  .review-card-description {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .review-card-date {
+    font-size: 14px;
+  }
+
+  .review-top-stars img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-card {
+    padding: 16px;
+  }
+
+  .review-card-top {
+    margin-bottom: 12px;
+  }
+
+  .review-card-name {
+    margin-bottom: 10px;
+  }
+
+  .review-card:hover {
+    transform: none;
+  }
+}

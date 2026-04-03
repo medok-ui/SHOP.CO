@@ -11,18 +11,20 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { ProductService } from '../../service/product.service';
+import { BurgerNavComponent } from '../burger-nav/burger-nav.component';
 import { navLink } from './nav-menu.data';
 import { INavMenu } from './nav-menu.interface';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, BurgerNavComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss', './header.component.adaptive.scss'],
 })
 export class HeaderComponent implements AfterViewInit {
   private productService = inject(ProductService);
   private destroyRef = inject(DestroyRef);
+  isBurgerNav = signal<boolean>(false);
 
   menuItems = signal<INavMenu[]>(navLink);
   searchInput = viewChild.required<ElementRef<HTMLInputElement>>('searchInput');
@@ -41,4 +43,9 @@ export class HeaderComponent implements AfterViewInit {
         },
       });
   }
+
+  onBurgerNav() {
+    this.isBurgerNav.update((val) => !val);
+  }
 }
+  

@@ -18,7 +18,7 @@ import { AlertComponent } from '../../shared/components/alert/alert.component';
   selector: 'app-product-details',
   imports: [AlertComponent],
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss',
+  styleUrls: ['./product-details.component.scss', './product-details.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent implements OnInit {

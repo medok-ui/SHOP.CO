@@ -1,0 +1,13 @@
+@if (isBurgerMenu()) {
+  <nav class="burger-menu">
+    <button class="burger-menu-btn" (click)="onCloseMenu()">X</button>
+
+    <ul class="burger-menu-lists">
+      @for (item of linksNavigated(); track $index) {
+        <li>
+          <a class="burger-menu-link" [routerLink]="item.link">{{ item.name }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+}

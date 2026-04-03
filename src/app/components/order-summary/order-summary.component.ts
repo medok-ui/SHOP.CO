@@ -7,7 +7,7 @@ import { AlertComponent } from '../../shared/components/alert/alert.component';
   selector: 'app-order-summary',
   imports: [FormsModule, AlertComponent],
   templateUrl: './order-summary.component.html',
-  styleUrl: './order-summary.component.scss',
+  styleUrls: ['./order-summary.component.scss', './order-summary.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrderSummaryComponent {

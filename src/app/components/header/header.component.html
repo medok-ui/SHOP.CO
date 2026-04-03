@@ -1,6 +1,13 @@
 <header class="header">
   <div class="header-wrapper">
-    <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
+    <div class="adaptive-section">
+      <div class="burger-nav">
+        <button (click)="onBurgerNav()">
+          <img src="/assets/svg/burger-btn.svg" alt="burger btn" />
+        </button>
+      </div>
+      <div class="logo"><a class="logo-link" routerLink="/home">SHOP.CO</a></div>
+    </div>
     <div class="navigation">
       <nav>
         <ul class="navigation-lists">
@@ -21,3 +28,7 @@
     </div>
   </div>
 </header>
+
+@if (isBurgerNav()) {
+  <app-burger-nav [linksNavigated]="menuItems()" />
+}

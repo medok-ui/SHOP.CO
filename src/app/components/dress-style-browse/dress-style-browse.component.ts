@@ -7,7 +7,7 @@ import { ICategory } from './dress-style-browse.interface';
   selector: 'app-dress-style-browse',
   imports: [RouterLink],
   templateUrl: './dress-style-browse.component.html',
-  styleUrl: './dress-style-browse.component.scss',
+  styleUrls: ['./dress-style-browse.component.scss', './dress-style.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DressStyleBrowseComponent {

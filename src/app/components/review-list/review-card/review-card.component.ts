@@ -5,7 +5,7 @@ import { IReview } from '../../../interfaces/review.interface';
   selector: 'app-review-card',
   imports: [],
   templateUrl: './review-card.component.html',
-  styleUrl: './review-card.component.scss',
+  styleUrls: ['./review-card.component.scss', './review-card.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewCardComponent {

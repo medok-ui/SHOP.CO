@@ -1,8 +1,10 @@
 .product {
   display: block;
   overflow: hidden;
-  width: 295px;
-  height: 408px;
+  width: 100%;
+  max-width: 295px;
+  height: auto;
+  min-height: 408px;
   background-color: #fff;
   color: #000;
 

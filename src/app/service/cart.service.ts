@@ -68,8 +68,8 @@ export class CartService {
   discount = computed(() =>
     this.cartProduct().reduce((acc: any, p: IProduct) => {
       const d = p.discount;
-      if (!d) return 0;
-      return Math.floor(acc + p.price * p.quantity - d / 100);
+      if (!d) return acc;
+      return Math.floor(acc + (p.price * p.quantity * d) / 100);
     }, 0),
   );
   deliveryFee = computed(() => {

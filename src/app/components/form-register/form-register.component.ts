@@ -25,7 +25,7 @@ function equalValues(controlName1: string, controlName2: string) {
   selector: 'app-form-register',
   imports: [ButtonLoginComponent, RouterLink, ReactiveFormsModule, AlertComponent],
   templateUrl: './form-register.component.html',
-  styleUrl: './form-register.component.scss',
+  styleUrls: ['./form-register.component.scss', './form-register.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormRegisterComponent {

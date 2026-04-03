@@ -1,0 +1,50 @@
+@media (max-width: 1024px) {
+  .testimonials {
+    margin-top: 72px;
+  }
+
+  .testimonials-title {
+    font-size: 38px;
+  }
+
+  .testimonials-head {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    margin-top: 56px;
+  }
+
+  .testimonials-title {
+    font-size: 30px;
+  }
+
+  .testimonials-head {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 500px) {
+  .testimonials {
+    margin-top: 40px;
+  }
+
+  .testimonials-title {
+    font-size: 24px;
+  }
+
+  .testimonials-head {
+    margin-bottom: 20px;
+  }
+
+  .testimonials-button {
+    width: 20px;
+    height: 20px;
+  }
+
+  .testimonials-buttons {
+    gap: 12px;
+  }
+}

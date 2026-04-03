@@ -20,7 +20,7 @@ import { colors } from './colors-data';
   selector: 'app-filters-catalog',
   imports: [ButtonLoginComponent, FormsModule, AlertComponent],
   templateUrl: './filters-catalog.component.html',
-  styleUrl: './filters-catalog.component.scss',
+  styleUrls: ['./filters-catalog.component.scss', './filters-catalog.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltersCatalogComponent implements AfterViewInit {

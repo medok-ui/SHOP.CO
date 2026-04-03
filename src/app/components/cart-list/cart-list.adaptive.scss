@@ -1,0 +1,33 @@
+@media (max-width: 1300px) {
+  .cart-list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cart-list {
+    height: auto;
+    max-height: none;
+  }
+
+  .cart-list-grid {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-list {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-list {
+    padding: 12px;
+  }
+
+  .cart-list-grid {
+    max-height: 400px;
+  }
+}

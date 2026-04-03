@@ -1,0 +1,14 @@
+@media (max-width: 1240px) {
+  .search {
+    display: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .navigation {
+    display: none !important;
+  }
+  .burger-nav {
+    display: block !important;
+  }
+}

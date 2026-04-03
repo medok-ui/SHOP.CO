@@ -5,7 +5,7 @@ import { CatalogStateService } from '../../service/catalog-state.service';
   selector: 'app-pagination',
   imports: [],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.scss',
+  styleUrls: ['./pagination.component.scss', './pagination.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {

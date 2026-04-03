@@ -1,0 +1,44 @@
+@media (max-width: 1024px) {
+  .product-section {
+    margin: 52px auto 48px auto;
+  }
+
+  .product-title {
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+
+  .product-lists {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-section {
+    margin: 40px auto 36px auto;
+  }
+
+  .product-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .product-lists {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .product-section {
+    margin: 32px auto 28px auto;
+  }
+
+  .product-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .product-lists {
+    gap: 16px;
+  }
+}

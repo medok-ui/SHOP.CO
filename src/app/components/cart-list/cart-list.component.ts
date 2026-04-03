@@ -1,14 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { CartItemComponent } from '../cart-item/cart-item.component';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { IProduct } from '../../interfaces/product.interface';
-import { cartProduct } from '../../data/cart-product.data';
 import { CartService } from '../../service/cart.service';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({
   selector: 'app-cart-list',
   imports: [CartItemComponent],
   templateUrl: './cart-list.component.html',
-  styleUrl: './cart-list.component.scss',
+  styleUrls: ['./cart-list.component.scss', './cart-list.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartListComponent {

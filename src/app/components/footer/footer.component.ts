@@ -14,7 +14,7 @@ import type { IPaymentMethods } from './footer-interface/footer-payment-methods.
   selector: 'app-footer',
   imports: [NewsletterSignupComponent, RouterLink],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+  styleUrls: ['./footer.component.scss', './footer.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {

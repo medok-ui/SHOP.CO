@@ -1,5 +1,6 @@
 .container {
   max-width: 1410px;
+  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -7,4 +8,38 @@
   padding: 70px 0 80px 0;
   display: flex;
   gap: 80px;
+}
+
+@media (max-width: 1200px) {
+  .catalog-wrapper {
+    gap: 40px;
+    padding: 50px 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .catalog-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .catalog-wrapper {
+    padding: 30px 0 50px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .catalog-wrapper {
+    padding: 20px 0 40px 0;
+  }
 }

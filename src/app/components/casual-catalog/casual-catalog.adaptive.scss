@@ -1,0 +1,31 @@
+@media (max-width: 1024px) {
+  .casual-catalog {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .casual-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .casual-catalog {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .casual-title {
+    font-size: 20px;
+  }
+
+  .casual-catalog {
+    gap: 12px;
+  }
+
+  .product-card {
+    margin-bottom: 10px;
+  }
+}

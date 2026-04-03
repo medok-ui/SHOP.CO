@@ -1,8 +1,13 @@
 <section class="brands">
   <div class="brands-container">
-    <ul class="brands-lists">
+    <ul class="brands-lists brands-lists--row-1">
       @for (item of brandsItem(); track $index) {
-        <li><img [src]="item.img" [alt]="item.alt" /></li>
+        <li><img class="brand-img" [src]="item.img" [alt]="item.alt" /></li>
+      }
+    </ul>
+    <ul class="brands-lists brands-lists--row-2">
+      @for (item of brandsMobileItem(); track $index) {
+        <li><img class="brand-img" [src]="item.img" [alt]="item.alt" /></li>
       }
     </ul>
   </div>

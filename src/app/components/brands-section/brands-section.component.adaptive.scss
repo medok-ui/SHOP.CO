@@ -1,0 +1,38 @@
+@media (max-width: 1024px) {
+  .brands {
+    padding: 40px 0;
+  }
+
+  .brand-img {
+    width: 120px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 724px) {
+  .brands {
+    padding: 32px 0;
+  }
+
+  .brands-lists {
+    animation: none;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .brands-lists--row-1 {
+    display: none !important;
+  }
+
+  .brands-lists--row-2 {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .brand-img {
+    width: 100px;
+    height: 21px;
+  }
+}

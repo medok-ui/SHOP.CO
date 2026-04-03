@@ -7,7 +7,7 @@ import { ReviewCardComponent } from './review-card/review-card.component';
   selector: 'app-testimonials',
   imports: [ReviewCardComponent],
   templateUrl: './testimonials.component.html',
-  styleUrl: './testimonials.component.scss',
+  styleUrls: ['./testimonials.component.scss', './testimonials.adaptive.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestimonialsComponent {

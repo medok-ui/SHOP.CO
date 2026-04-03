@@ -70,7 +70,7 @@ Pixel-perfect implementation of:
 
  /login         — Sign in with validation & error feedback
 
-  /register      — Full registration with password match validator
+ /register      — Full registration with password match validator
 ```
 
 ---
